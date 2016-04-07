@@ -11,7 +11,7 @@ public class Plano  : MonoBehaviour {
     
 	static public int controle = 0 ; 
 	public GameObject nextPlane ;
-   
+	int a;
     private int[] angles = {0,90,180,270};
    
 	// Use this for initialization
@@ -27,11 +27,25 @@ public class Plano  : MonoBehaviour {
 	void Update () {
         transform.position = Vector3.MoveTowards(transform.position, alvo.transform.position, speed*Time.deltaTime);
 		if (localplayer.transform.position.x == transform.position.x) {
-
+			bool acertou ; 
 			if (player!=null && ObjComparar!=null)
 			{	
-				if (player.transform.rotation == ObjComparar.transform.rotation) Debug.Log("vai virar jogo");
-				else Debug.Log("tu é ruim");
+
+				if (player.transform.rotation==ObjComparar.transform.rotation){ 
+					//Debug.Log ("Valeu = a peca se chama " + ObjComparar.gameObject.name+"e a rotacao "+ ObjComparar.transform.rotation+ "player "+player.transform.rotation);
+					acertou = true ;
+				}
+				else if (ObjComparar.transform.rotation *new Quaternion(-1f,-1f,-1f,-1f)  == player.transform.rotation) 
+				{
+					acertou = true;
+
+					Debug.Log ("protectbug"+a);
+					a++;
+				}
+				else acertou = false;
+
+				if (acertou)Debug.Log ("Valeu = a peca se chama " + ObjComparar.gameObject.name+"e a rotacao "+ ObjComparar.transform.rotation+ "player "+player.transform.rotation); 
+				else Debug.Log ("Fail a peca se chama " + ObjComparar.gameObject.name+"e a rotacao "+ ObjComparar.transform.rotation+ "player "+player.transform.rotation);
 			}
 			if (ObjComparar!= null) Destroy(ObjComparar.gameObject);
 			
@@ -65,11 +79,12 @@ public class Plano  : MonoBehaviour {
 		string objectname = "Plane" + controle;
 		//Debug.Log (objectname);
 		nextPlane = GameObject.Find (objectname);
-		int rand = Random.Range(0, peças.Length);
+		int rand = 2;//Random.Range(0, peças.Length);
 		player = Instantiate(jogadores[rand], localplayer.transform.position, Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject; 
 
-		ObjComparar = Instantiate(peças[rand],nextPlane.transform.position, Quaternion.Euler(new Vector3(0, angles[Random.Range(0, angles.Length)], angles[Random.Range(0, angles.Length)]))) as GameObject;
+		ObjComparar = Instantiate(peças[rand],nextPlane.transform.position, Quaternion.identity) as GameObject;
 		ObjComparar.transform.parent = nextPlane.transform;
+		ObjComparar.transform.rotation= Quaternion.Euler(0, angles [Random.Range (0, angles.Length)], angles [Random.Range (0, angles.Length)]);
 		ObjComparar.transform.position += new Vector3(-2.4f, 2, 0);
 		//Debug.Log (speed);
 	}	

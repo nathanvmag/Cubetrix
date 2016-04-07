@@ -17,7 +17,7 @@ public class Novo : MonoBehaviour {
 
 		if (Input.GetKeyDown ("right")) 
 		{
-			transform.Rotate(0,90,0,Space.World);
+			transform.Rotate(0,-90,0,Space.World);
 		}
 
 		if (Input.GetKeyDown ("up")) 
