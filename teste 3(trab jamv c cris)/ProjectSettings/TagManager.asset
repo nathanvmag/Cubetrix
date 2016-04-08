@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ponto
   - area
+  - pause
   layers:
   - Default
   - TransparentFX
