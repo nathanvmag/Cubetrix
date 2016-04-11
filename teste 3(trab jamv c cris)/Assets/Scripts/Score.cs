@@ -18,6 +18,11 @@ public class Score : MonoBehaviour
     void Update()
     {
         scoretext.text = score.ToString();
+        if (Plano.seguidas == 10)
+        {
+            setVidas++;
+            Plano.seguidas = 0;
+        }
     }
     public int setScore
 	{

@@ -3,10 +3,11 @@ using System.Collections;
 
 public class Pause : MonoBehaviour {
     public static bool pause;
-    
+    private SpriteRenderer render;
    public GameObject[] pauseUi;
 	void Start () {
         pause = false; 
+        render = GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
@@ -16,6 +17,7 @@ public class Pause : MonoBehaviour {
         
         if (!pause)
         {
+            render.enabled = true;
             click();
             for (int i = 0; i < pauseUi.Length; i++)
             {
@@ -25,6 +27,7 @@ public class Pause : MonoBehaviour {
         }
         else
         {
+            render.enabled = false;
         for(int i = 0; i<pauseUi.Length;i++)
         {
             pauseUi[i].SetActive(true);
@@ -59,6 +62,10 @@ public class Pause : MonoBehaviour {
           {
               Application.LoadLevel("GrandeGame"); 
           }
+    public void voltaMenu()
+         {
+             Application.LoadLevel("Menu");
+         }
 
          }
 

@@ -15,6 +15,9 @@ public class Plano  : MonoBehaviour {
     private int[] angles = {0,90,180,270};
 	Transform localpespe;
     private Score score; 
+    public static float  speedantiga;
+    bool controlevelo;
+    public static int seguidas = 0;
 	// Use this for initialization
 	void Start () {
         speed = 2;
@@ -24,7 +27,9 @@ public class Plano  : MonoBehaviour {
         alvo.gameObject.name = "ponto";
 		player = null; 
 		localpespe = GameObject.Find ("pespe").GetComponent<Transform> ();
-        
+        speedantiga = speed;
+        controlevelo = false;
+        seguidas = 0; 
 	}
 	
 	// Update is called once per frame
@@ -32,38 +37,54 @@ public class Plano  : MonoBehaviour {
     {
         if (!Pause.pause)
         {
+            
+            if (Input.GetKey(KeyCode.Space))
+            {
+               speed = 10;
+
+            }
+            else
+            {
+                speed = speedantiga;
+               // Debug.Log(speed);
+            }
             transform.position = Vector3.MoveTowards(transform.position, alvo.transform.position, speed * Time.deltaTime);
             if (localplayer.transform.position.x == transform.position.x)
             {
                 bool acertou;
                 if (player != null && ObjComparar != null)
                 {
+                    Vector3 diff = player.transform.eulerAngles - ObjComparar.transform.eulerAngles;
+                    //Debug.Log(player.transform.eulerAngles.magnitude + " " + ObjComparar.transform.eulerAngles.magnitude);
 
-                    if (player.transform.rotation == ObjComparar.transform.rotation)
+                    if (diff.magnitude <= 0.1f)
                     {
                         //Debug.Log ("Valeu = a peca se chama " + ObjComparar.gameObject.name+"e a rotacao "+ ObjComparar.transform.rotation+ "player "+player.transform.rotation);
                         acertou = true;
                     }
-                    else if (ObjComparar.transform.rotation * new Quaternion(-1f, -1f, -1f, -1f) == player.transform.rotation)
+                    /*else if (ObjComparar.transform.rotation * new Quaternion(-1f, -1f, -1f, -1f) == player.transform.rotation)
                     {
                         acertou = true;
                         Debug.Log("protectbug" + a);
                         a++;
-                    }
+                    }*/
                     else acertou = false;
 
                     if (acertou)
                     {
                         Debug.Log("Valeu = a peca se chama " + ObjComparar.gameObject.name + "e a rotacao " + ObjComparar.transform.rotation + "player " + player.transform.rotation);
-                        speed = speed == 10f ? speed = 10f : speed + 0.2f;
+                        speed = speed >= 10f ? speed = 10f : speed + 0.2f;
                         score.setScore += 1;
-
+                        if (speed != 10 ) speedantiga = speed;
+                        seguidas++;
+                        
                     }
                     else
                     {
                         speed -= 0.4f;
                         Debug.Log("Fail a peca se chama " + ObjComparar.gameObject.name + "e a rotacao " + ObjComparar.transform.rotation + "player " + player.transform.rotation);
                         score.setVidas--;
+                        seguidas = 0; 
                     }
                 }
                 if (ObjComparar != null) Destroy(ObjComparar.gameObject);
