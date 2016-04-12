@@ -35,11 +35,11 @@ public class Score : MonoBehaviour
         set { vidas = value;
         for (int i = 0; i < imgvidas.Length;i++)
         {
-            imgvidas[i].gameObject.active = false;
+            imgvidas[i].gameObject.SetActive(false)  ;
         } 
             for (int i = 0; i < vidas; i++)
             {
-                imgvidas[i].gameObject.active = true ;
+                imgvidas[i].gameObject.SetActive(true) ;
             }
                 
                        }

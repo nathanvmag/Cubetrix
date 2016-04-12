@@ -1,14 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
+    private Score scriptscore;
+    private Shake scriptshake;
+    bool explodir = true;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
+    // Use this for initialization
+    void Start()
+    {
+        scriptscore = Camera.main.GetComponent<Score>();
+        scriptshake = GetComponent<Shake>();
+        scriptshake.enabled = false;
+    }
+
+    // Update is called once per frame
     void Update()
     {
         if (!Pause.pause)
@@ -33,12 +41,34 @@ public class Player : MonoBehaviour {
             {
                 transform.Rotate(0, 0, 90, Space.World);
             }
+            if (scriptscore.setVidas == 0)
+            {
+                scriptshake.enabled = true;
+                if (scriptshake.shakeDuration == 0)
+                {
+                    if (transform.childCount > 0 && explodir)
+                    {
+                        foreach (Transform t in transform)
+                        {
+                            Debug.Log("bla");
+                            t.transform.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10)), ForceMode.Impulse);
+
+                        }
+                        transform.DetachChildren();
+                        explodir = false;
+                        Destroy(transform.gameObject);
+                    }
+
+
+                }
+            }
         }
+
+
         else gameObject.SetActive(false);
     }
-
-	void OnCollisionEnter(Collision collision)
-	{
-
-	}
 }
+    
+        
+       
+        

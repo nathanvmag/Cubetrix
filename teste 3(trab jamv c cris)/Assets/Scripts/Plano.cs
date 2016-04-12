@@ -16,7 +16,7 @@ public class Plano  : MonoBehaviour {
 	Transform localpespe;
     private Score score; 
     public static float  speedantiga;
-    bool controlevelo;
+    
     public static int seguidas = 0;
 	// Use this for initialization
 	void Start () {
@@ -28,7 +28,7 @@ public class Plano  : MonoBehaviour {
 		player = null; 
 		localpespe = GameObject.Find ("pespe").GetComponent<Transform> ();
         speedantiga = speed;
-        controlevelo = false;
+        
         seguidas = 0; 
 	}
 	
@@ -55,20 +55,11 @@ public class Plano  : MonoBehaviour {
                 if (player != null && ObjComparar != null)
                 {
                     Vector3 diff = player.transform.eulerAngles - ObjComparar.transform.eulerAngles;
-                    //Debug.Log(player.transform.eulerAngles.magnitude + " " + ObjComparar.transform.eulerAngles.magnitude);
-
                     if (diff.magnitude <= 0.1f)
                     {
-                        //Debug.Log ("Valeu = a peca se chama " + ObjComparar.gameObject.name+"e a rotacao "+ ObjComparar.transform.rotation+ "player "+player.transform.rotation);
-                        acertou = true;
+                       acertou = true;
                     }
-                    /*else if (ObjComparar.transform.rotation * new Quaternion(-1f, -1f, -1f, -1f) == player.transform.rotation)
-                    {
-                        acertou = true;
-                        Debug.Log("protectbug" + a);
-                        a++;
-                    }*/
-                    else acertou = false;
+                   else acertou = false;
 
                     if (acertou)
                     {
@@ -88,19 +79,18 @@ public class Plano  : MonoBehaviour {
                     }
                 }
                 if (ObjComparar != null) Destroy(ObjComparar.gameObject);
-
                 transform.position = new Vector3(65, transform.position.y, transform.position.z);
-
-
-                if (transform.childCount > 0)
+                if (score.setVidas != 0)
                 {
-                    foreach (Transform t in transform)
+                    if (transform.childCount > 0)
                     {
-                        Destroy(t.gameObject);
+                        foreach (Transform t in transform)
+                        {
+                            Destroy(t.gameObject);
+                        }
                     }
+                    newbloco();
                 }
-                newbloco();
-
             }
         }
     }
