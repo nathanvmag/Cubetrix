@@ -1,20 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine.Audio;
 public class Player : MonoBehaviour
 {
     private Score scriptscore;
     private Shake scriptshake;
     bool explodir = true;
-
+    
     // Use this for initialization
     void Start()
     {
         scriptscore = Camera.main.GetComponent<Score>();
         scriptshake = GetComponent<Shake>();
         scriptshake.enabled = false;
-    }
+         }
 
     // Update is called once per frame
     void Update()
@@ -44,6 +44,8 @@ public class Player : MonoBehaviour
             if (scriptscore.setVidas == 0)
             {
                 scriptshake.enabled = true;
+
+                
                 if (scriptshake.shakeDuration == 0)
                 {
                     if (transform.childCount > 0 && explodir)
@@ -54,8 +56,9 @@ public class Player : MonoBehaviour
                             t.transform.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10)), ForceMode.Impulse);
 
                         }
+                        
                         transform.DetachChildren();
-                        explodir = false;
+                        explodir = false;                       
                         Destroy(transform.gameObject);
                     }
 

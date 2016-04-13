@@ -4,25 +4,27 @@ using System.Collections;
 public class Plano  : MonoBehaviour {
     static public float speed = 2;
     public GameObject alvo;
-    public GameObject[] peças,jogadores;
+    public  GameObject[] peças,jogadores;
     public static GameObject ObjComparar;
     public static GameObject player; 
     public GameObject localplayer; 
     static public int controle = 0 ; 
 	public GameObject nextPlane;
 	public static GameObject copy;
-	int a;
     private int[] angles = {0,90,180,270};
 	Transform localpespe;
     private Score score; 
     public static float  speedantiga;
-    
+    public Material[] skyboxes; 
     public static int seguidas = 0;
+    public AudioClip passou,explo;
+    AudioSource audio;
 	// Use this for initialization
 	void Start () {
+        audio = GetComponent<AudioSource>();
         speed = 2;
         controle = 0;
-        a = 0; 
+       
         score = Camera.main.GetComponent<Score>();
         alvo.gameObject.name = "ponto";
 		player = null; 
@@ -63,17 +65,19 @@ public class Plano  : MonoBehaviour {
 
                     if (acertou)
                     {
-                        Debug.Log("Valeu = a peca se chama " + ObjComparar.gameObject.name + "e a rotacao " + ObjComparar.transform.rotation + "player " + player.transform.rotation);
+                       // Debug.Log("Valeu = a peca se chama " + ObjComparar.gameObject.name + "e a rotacao " + ObjComparar.transform.rotation + "player " + player.transform.rotation);
                         speed = speed >= 10f ? speed = 10f : speed + 0.2f;
                         score.setScore += 1;
+                        if (score.setScore % 10 == 0) RenderSettings.skybox = skyboxes[Random.Range(0, skyboxes.Length)];
                         if (speed != 10 ) speedantiga = speed;
                         seguidas++;
+                        audio.PlayOneShot(passou);
                         
                     }
                     else
                     {
                         speed -= 0.4f;
-                        Debug.Log("Fail a peca se chama " + ObjComparar.gameObject.name + "e a rotacao " + ObjComparar.transform.rotation + "player " + player.transform.rotation);
+                       // Debug.Log("Fail a peca se chama " + ObjComparar.gameObject.name + "e a rotacao " + ObjComparar.transform.rotation + "player " + player.transform.rotation);
                         score.setVidas--;
                         seguidas = 0; 
                     }
@@ -91,6 +95,7 @@ public class Plano  : MonoBehaviour {
                     }
                     newbloco();
                 }
+                
             }
         }
     }

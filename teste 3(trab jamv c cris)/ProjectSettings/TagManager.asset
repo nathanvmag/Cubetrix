@@ -7,6 +7,10 @@ TagManager:
   - ponto
   - area
   - pause
+  - play
+  - creditos
+  - menu
+  - player
   layers:
   - Default
   - TransparentFX

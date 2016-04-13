@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/GrandeGame.unity
+    path: Assets/scenes/Menu.unity
   - enabled: 1
-    path: Assets/Menus e creditos/Menu.unity
+    path: Assets/scenes/GrandeGame.unity
   - enabled: 1
-    path: Assets/Menus e creditos/derrota.unity
+    path: Assets/scenes/derrota.unity
   - enabled: 1
-    path: Assets/Menus e creditos/creditos.unity
+    path: Assets/scenes/creditos.unity

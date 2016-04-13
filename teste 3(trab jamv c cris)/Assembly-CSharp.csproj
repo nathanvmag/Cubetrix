@@ -46,13 +46,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Menus e creditos\giramentodapeca.cs" />
-     <Compile Include="Assets\Menus e creditos\mudardecena.cs" />
+     <Compile Include="Assets\Scripts\Gameover.cs" />
      <Compile Include="Assets\Scripts\Pause.cs" />
      <Compile Include="Assets\Scripts\Plano.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\Score.cs" />
      <Compile Include="Assets\Scripts\Shake.cs" />
+     <Compile Include="Assets\Scripts\giramentodapeca.cs" />
+     <Compile Include="Assets\Scripts\mudardecena.cs" />
      <Compile Include="Assets\Scripts\objectcomp.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
