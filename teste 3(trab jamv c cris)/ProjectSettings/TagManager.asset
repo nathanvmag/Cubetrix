@@ -20,7 +20,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - peca
   - 
   - 
   - 
@@ -47,4 +47,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: encima
+    uniqueID: 2874144139
     locked: 0

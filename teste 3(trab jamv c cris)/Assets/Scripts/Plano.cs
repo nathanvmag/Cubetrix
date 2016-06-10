@@ -40,7 +40,7 @@ public class Plano  : MonoBehaviour {
         if (!Pause.pause)
         {
             
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space)|| touchh.aperto)
             {
                speed = 10;
 

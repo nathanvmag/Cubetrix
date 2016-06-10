@@ -7,38 +7,51 @@ public class Player : MonoBehaviour
     private Score scriptscore;
     private Shake scriptshake;
     bool explodir = true;
-    
+    GameObject[] protectbug; 
+
     // Use this for initialization
     void Start()
     {
         scriptscore = Camera.main.GetComponent<Score>();
         scriptshake = GetComponent<Shake>();
         scriptshake.enabled = false;
-         }
+        bool explodir = true; 
+                 }
 
     // Update is called once per frame
     void Update()
     {
         if (!Pause.pause)
         {
-            gameObject.SetActive(true);
-            if (Input.GetKeyDown("left"))
+            protectbug = GameObject.FindGameObjectsWithTag("player");
+            if (protectbug.Length > 1)
             {
+                Destroy(protectbug[0]);
+                Debug.Log("chego");
+            }
+
+            gameObject.SetActive(true);
+            if (Input.GetKeyDown("left") || touchh.esq)
+            {
+                touchh.esq = false; 
                 transform.Rotate(0, 90, 0, Space.World);
             }
 
-            if (Input.GetKeyDown("right"))
+            if (Input.GetKeyDown("right") || touchh.dir)
             {
                 transform.Rotate(0, -90, 0, Space.World);
+                touchh.dir = false;
             }
 
-            if (Input.GetKeyDown("up"))
+            if (Input.GetKeyDown("up") || touchh.cima)
             {
+                touchh.cima = false; 
                 transform.Rotate(0, 0, -90, Space.World);
             }
 
-            if (Input.GetKeyDown("down"))
+            if (Input.GetKeyDown("down") || touchh.baixo)
             {
+                touchh.baixo = false; 
                 transform.Rotate(0, 0, 90, Space.World);
             }
             if (scriptscore.setVidas == 0)
