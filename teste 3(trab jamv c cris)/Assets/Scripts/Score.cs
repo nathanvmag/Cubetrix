@@ -80,7 +80,7 @@ public class Score : MonoBehaviour
     {
         tutorialimg.gameObject.SetActive(true);
         Debug.Log("ei");
-        yield return new WaitForSeconds(9);
+        yield return new WaitForSeconds(5);
 
         tutorialimg.gameObject.SetActive(false);
         start.gameObject.SetActive(true);
