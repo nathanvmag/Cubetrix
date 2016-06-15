@@ -37,7 +37,7 @@ public class Plano  : MonoBehaviour {
 	// Update is called once per frame
     void Update()
     {
-        if (!Pause.pause)
+        if (!Pause.pause &&!Score.showbutton)
         {
             
             if (Input.GetKey(KeyCode.Space)|| touchh.aperto)
@@ -78,13 +78,19 @@ public class Plano  : MonoBehaviour {
                     {
                         speed -= 0.4f;
                        // Debug.Log("Fail a peca se chama " + ObjComparar.gameObject.name + "e a rotacao " + ObjComparar.transform.rotation + "player " + player.transform.rotation);
-                        score.setVidas--;
+                        if (score.setVidas-1==0&&!Score.mostro)
+                        {
+                            if (4 == 4) Score.showbutton = true;
+                            else score.setVidas--;
+                            Debug.Log("veio\a");
+                        }
+                        else score.setVidas--;
                         seguidas = 0; 
                     }
                 }
                 if (ObjComparar != null) Destroy(ObjComparar.gameObject);
                 transform.position = new Vector3(65, transform.position.y, transform.position.z);
-                if (score.setVidas != 0)
+                if (score.setVidas != 0 )
                 {
                     if (transform.childCount > 0)
                     {

@@ -1,24 +1,46 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Advertisements;
+
 
 public class Pause : MonoBehaviour {
     public static bool pause;
-    private SpriteRenderer render;
+    public GameObject pausebt;
    public GameObject[] pauseUi;
+   bool restargame, carregamenu;
 	void Start () {
-        pause = false; 
-        render = GetComponent<SpriteRenderer>();
+        pause = false;
+        pausebt = GameObject.Find("pausebt");
+        restargame = false;
+        carregamenu = false; 
 	}
-	
+	void Awake ()
+    {
+        Advertisement.Initialize("1082397", true);
+    }
 	// Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) pause = !pause;
         
+        if (Input.GetKeyDown(KeyCode.Escape)) pause = !pause;
+        if (restargame)
+        {
+            if (mudardecena.fadeeout()){
+               
+                Application.LoadLevel("GrandeGame");}
+        }
+        if (carregamenu)
+        {
+            if (mudardecena.fadeeout())
+            {
+
+                Application.LoadLevel("Menu");
+            }
+        }
         if (!pause)
         {
-            render.enabled = true;
-            click();
+           pausebt.SetActive(true);
+            //click();
             for (int i = 0; i < pauseUi.Length; i++)
             {
                 pauseUi[i].SetActive(false);
@@ -27,7 +49,7 @@ public class Pause : MonoBehaviour {
         }
         else
         {
-            render.enabled = false;
+            pausebt.SetActive(false);
         for(int i = 0; i<pauseUi.Length;i++)
         {
             pauseUi[i].SetActive(true);
@@ -41,13 +63,14 @@ public class Pause : MonoBehaviour {
 
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            
+            Debug.DrawLine(ray.origin, ray.origin + ray.direction * 100f);
             if (Physics.Raycast(ray, out hit, 100))
             {
                 if (hit.transform.tag == "pause")
                 {
                     
-                    pause = true; 
+                    pause = true;
+                    pausebt.SetActive(false);
                 }
 
             }
@@ -60,12 +83,32 @@ public class Pause : MonoBehaviour {
     }
          public void btreload()
           {
-              Application.LoadLevel("GrandeGame"); 
+             if (Random.Range(0,10)==5)
+             {
+                 StartCoroutine(ShowAdWhenReady());
+             }
+              restargame = true;
+              
           }
     public void voltaMenu()
          {
-             Application.LoadLevel("Menu");
+             carregamenu = true;
+             if (Random.Range(0, 10) == 5)
+             {
+                 StartCoroutine(ShowAdWhenReady());
+             }
          }
+    public void btPause()
+         {
+             pause = true; 
+         }
+    IEnumerator ShowAdWhenReady()
+    {
+        while (!Advertisement.isReady())
+            yield return null;
+
+        Advertisement.Show();
+    }
 
          }
 

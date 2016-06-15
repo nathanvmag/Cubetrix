@@ -14,47 +14,77 @@ public class Score : MonoBehaviour
     float timer;
     public AudioClip explo;
     bool podexplo = true;
-    public GameObject[] jogadores; 
+    public GameObject[] jogadores;
+    public GameObject botaopropa;
+    public Transform local;
+    public static bool showbutton,mostro;
+    float t = 5;
+    
     // Use this for initialization
     void Start()
     {
         StartCoroutine(Tutorial());
         highScore = PlayerPrefs.GetInt("highscore") == null ? 0 : PlayerPrefs.GetInt("highscore");
-        setVidas = 3;
+        setVidas = 1;
         setScore = 0;
         Plano.player =  Instantiate(jogadores[Random.Range(0,jogadores.Length)], GameObject.Find("posiplayer").transform.position, Quaternion.identity)as GameObject;
+        showbutton = false;
+        mostro = false;
+        t = 5; 
     }
 
     // Update is called once per frame
     void Update()
     {
-        scoretext.text = score.ToString();
-        if (Plano.seguidas == 10)
+        if (showbutton)
         {
-            setVidas++;
-            Plano.seguidas = 0;
-        }
-        if (score > highScore)
-        {
-            PlayerPrefs.SetInt("highscore", score);
-            highscoreimg.gameObject.SetActive(true);    
-           
-        }
-        if (setVidas == 0)
-        {
-           PlayerPrefs.SetInt("score", score);
-            timer += Time.deltaTime;
+            t -= Time.deltaTime;
+            Debug.Log("veio");
+            if (!mostro)
+            {
+                Instantiate(botaopropa, local.position, Quaternion.identity);
+                mostro = true;
+            }
+            if (t <0)
+            {
+                showbutton = false;
+                setVidas--;
+               GameObject.FindGameObjectWithTag("botaoPropa").SetActive(false);
+                
+            }}
+            scoretext.text = score.ToString();
+            if (Plano.seguidas == 10)
+            {
+                setVidas++;
+                Plano.seguidas = 0;
+            }
+            if (score > highScore)
+            {
+                PlayerPrefs.SetInt("highscore", score);
+                highscoreimg.gameObject.SetActive(true);
+                scoretext.color = new Color(84f / 255f, 225f / 255f, 178f / 255f);
 
-            if (timer > 2 && podexplo)
-            {
-                GetComponent<AudioSource>().PlayOneShot(explo);
-                podexplo = false;
             }
-            if (timer> 4)
+            if (setVidas == 0)
             {
-                Application.LoadLevel("derrota");
+
+
+
+                PlayerPrefs.SetInt("score", score);
+                timer += Time.deltaTime;
+
+                if (timer > 2 && podexplo)
+                {
+                    GetComponent<AudioSource>().PlayOneShot(explo);
+                    podexplo = false;
+                }
+                if (timer > 4)
+                {
+                    Application.LoadLevel("derrota");
+                }
             }
-        }
+
+        
     }
     public int setScore
 	{
@@ -79,7 +109,7 @@ public class Score : MonoBehaviour
     IEnumerator Tutorial()
     {
         tutorialimg.gameObject.SetActive(true);
-        Debug.Log("ei");
+
         yield return new WaitForSeconds(5);
 
         tutorialimg.gameObject.SetActive(false);

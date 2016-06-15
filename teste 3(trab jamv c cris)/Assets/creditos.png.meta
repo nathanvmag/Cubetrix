@@ -1,9 +1,10 @@
 fileFormatVersion: 2
 guid: 9eefbd5d62a959742bda923da99bd208
-timeCreated: 1465519833
+timeCreated: 1465939657
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: creditos_0
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -52,7 +53,17 @@ TextureImporter:
     textureFormat: -3
     compressionQuality: 50
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: creditos_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 13
+        width: 431
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 

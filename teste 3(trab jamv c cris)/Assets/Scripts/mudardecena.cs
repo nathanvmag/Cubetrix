@@ -2,61 +2,73 @@
 using System.Collections;
 
 public class mudardecena : MonoBehaviour {
-    public Camera cam; 
+    GameObject fadein;
+    float alpha;
+    bool carregar, carrecredito, carregamenu,carregajogo; 
 	// Use this for initialization
 	void Start () {
-	
+        fadein = GameObject.Find("fade");
+        carregar = false;
+        carrecredito = false;
+        carregamenu = false;
+        carregajogo = false; 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-	}
-	void OnMouseDown(){
-		if (gameObject.tag == "creditos") {
-			Application.LoadLevel("creditos");
-			Debug.Log ("acerto");
-		}
-		if (gameObject.tag == "menu") {
-			Application.LoadLevel("menu");
-			Debug.Log ("volto");
-		}
-        if (gameObject.tag == "play")
-        {
-            Application.LoadLevel("GrandeGame");
-            Debug.Log("volto");
+        if (carrecredito)
+        {            
+            if (fadeeout()) Application.LoadLevelAsync("creditos");
+           
         }
-	}
-    private void click()
-    {
-        if (Input.GetTouch(0).phase == TouchPhase.Began)
+        if (carregamenu)
         {
-            var ray = cam.ScreenPointToRay(Input.GetTouch(0).position);
-
-            // RaycastHit2D hit = Physics2D.Raycast(new Vector2(ray.x, ray.y), Vector2.zero, Mathf.Infinity);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100))
-            {
-                if (hit.transform.gameObject.tag == "creditos")
-                {
-                    Application.LoadLevel("creditos");
-                    Debug.Log("acerto");
-                }
-                if (hit.transform.gameObject.tag == "menu")
-                {
-                    Application.LoadLevel("menu");
-                    Debug.Log("volto");
-                }
-                if (hit.transform.gameObject.tag == "play")
-                {
-                    Application.LoadLevel("GrandeGame");
-                    Debug.Log("volto");
-                }
             
-            }
-
-
+            if (fadeeout()) Application.LoadLevelAsync("menu");
         }
+        if (carregajogo)
+        {
+            
+            {
+                if (fadeeout())Application.LoadLevelAsync("GrandeGame");
+            }
+        }
+	}	
+	
+    public void clickcreditos()
+    {
+        carrecredito = true;   
+			Debug.Log ("acerto");
+    }
+    public void clickjogar()
+    {
+        carregajogo = true; 
+            Debug.Log("volto");
+        
+    }
+    public void clickvoltar()
+    {
+        carregamenu = true;
+        GameObject.Find("Button").SetActive(false);
+	    Debug.Log ("volto");
+    }
+    public static bool fadeeout()
+    {
+        float alpha;
+       
+        GameObject fadein = GameObject.Find("fade");
+        if (fadein == null) Debug.Log("opa n tem fade ");
+        Debug.Log("veio");
+        alpha = Time.deltaTime / 1.5f;
+       if (fadein.GetComponent<SpriteRenderer>().color.a < 1)
+        {
+            fadein.GetComponent<SpriteRenderer>().color = new Color(fadein.GetComponent<SpriteRenderer>().color.r, fadein.GetComponent<SpriteRenderer>().color.b, fadein.GetComponent<SpriteRenderer>().color.g, fadein.GetComponent<SpriteRenderer>().color.a + alpha);
+            return false; 
+        }
+        return true; 
+    }
+
+        
 
     }
-}
+

@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Pause.pause)
+        if (!Pause.pause && !Score.showbutton)
         {
             protectbug = GameObject.FindGameObjectsWithTag("player");
             if (protectbug.Length > 1)
@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
                 touchh.baixo = false; 
                 transform.Rotate(0, 0, 90, Space.World);
             }
-            if (scriptscore.setVidas == 0)
+            if (scriptscore.setVidas == 0 )
             {
                 scriptshake.enabled = true;
 
@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
         }
 
 
-        else gameObject.SetActive(false);
+        else if (Pause.pause)gameObject.SetActive(false);
     }
 }
     
