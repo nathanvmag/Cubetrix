@@ -8,6 +8,7 @@ public class Pause : MonoBehaviour {
     public GameObject pausebt;
    public GameObject[] pauseUi;
    bool restargame, carregamenu;
+   bool AdShow; 
 	void Start () {
         pause = false;
         pausebt = GameObject.Find("pausebt");
@@ -16,25 +17,30 @@ public class Pause : MonoBehaviour {
 	}
 	void Awake ()
     {
-        Advertisement.Initialize("1082397", true);
+        Advertisement.Initialize("1082397");
     }
 	// Update is called once per frame
     void Update()
     {
         
         if (Input.GetKeyDown(KeyCode.Escape)) pause = !pause;
-        if (restargame)
+        if (!AdShow)
         {
-            if (mudardecena.fadeeout()){
-               
-                Application.LoadLevel("GrandeGame");}
-        }
-        if (carregamenu)
-        {
-            if (mudardecena.fadeeout())
+            if (restargame)
             {
+                if (mudardecena.fadeeout())
+                {
 
-                Application.LoadLevel("Menu");
+                    Application.LoadLevel("GrandeGame");
+                }
+            }
+            if (carregamenu)
+            {
+                if (mudardecena.fadeeout())
+                {
+
+                    Application.LoadLevel("Menu");
+                }
             }
         }
         if (!pause)
@@ -83,7 +89,9 @@ public class Pause : MonoBehaviour {
     }
          public void btreload()
           {
-             if (Random.Range(0,10)==5)
+             int randon = Random.Range(0,5);
+             Debug.Log(randon);
+             if (randon==0)
              {
                  StartCoroutine(ShowAdWhenReady());
              }
@@ -93,7 +101,9 @@ public class Pause : MonoBehaviour {
     public void voltaMenu()
          {
              carregamenu = true;
-             if (Random.Range(0, 10) == 5)
+             int randon = Random.Range(0, 5);
+             Debug.Log(randon);
+             if (randon == 1)
              {
                  StartCoroutine(ShowAdWhenReady());
              }
@@ -107,7 +117,28 @@ public class Pause : MonoBehaviour {
         while (!Advertisement.isReady())
             yield return null;
 
-        Advertisement.Show();
+        ShowOptions options = new ShowOptions();
+        options.resultCallback = HandleShowResult;
+        Advertisement.Show("", options);
+        AdShow = true; 
+    }
+    private void HandleShowResult(ShowResult result)
+    {
+        switch (result)
+        {
+            case ShowResult.Finished:
+                AdShow = false;
+                Debug.Log("foi");
+                break;
+            case ShowResult.Skipped:
+                Debug.Log("eita");
+                AdShow = false;
+                break;
+            case ShowResult.Failed:
+                Debug.Log("ah");
+                AdShow = false;
+                break;
+        }
     }
 
          }

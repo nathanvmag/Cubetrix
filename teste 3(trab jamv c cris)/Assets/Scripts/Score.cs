@@ -18,40 +18,61 @@ public class Score : MonoBehaviour
     public GameObject botaopropa;
     public Transform local;
     public static bool showbutton,mostro;
-    float t = 5;
-    
+    float  t = 5;
+    public static bool click;
+    public Text time;
+    public GameObject menupropa;
+    bool gameoveer; 
     // Use this for initialization
     void Start()
     {
         StartCoroutine(Tutorial());
         highScore = PlayerPrefs.GetInt("highscore") == null ? 0 : PlayerPrefs.GetInt("highscore");
-        setVidas = 1;
+        setVidas = 3;
         setScore = 0;
         Plano.player =  Instantiate(jogadores[Random.Range(0,jogadores.Length)], GameObject.Find("posiplayer").transform.position, Quaternion.identity)as GameObject;
         showbutton = false;
         mostro = false;
-        t = 5; 
+        t = 7;
+        gameoveer = false; 
     }
 
     // Update is called once per frame
     void Update()
+    {if (gameoveer)
     {
+        if (mudardecena.fadeeout())
+        {
+            Application.LoadLevel("derrota");
+        }
+    }
+
         if (showbutton)
         {
+            Plano.player.SetActive(false);
+            menupropa.SetActive(true);
             t -= Time.deltaTime;
+            time.text = t.ToString().Substring(0, 1);
             Debug.Log("veio");
             if (!mostro)
             {
-                Instantiate(botaopropa, local.position, Quaternion.identity);
+                botaopropa.SetActive(true);
                 mostro = true;
             }
-            if (t <0)
+            if (t < 0 && !click)
             {
+                t = 0; 
                 showbutton = false;
                 setVidas--;
-               GameObject.FindGameObjectWithTag("botaoPropa").SetActive(false);
-                
-            }}
+                GameObject.FindGameObjectWithTag("botaoPropa").SetActive(false);
+
+            }
+        }
+        else if (!Pause.pause)
+        {
+            menupropa.SetActive(false);
+            if (Plano.player != null) Plano.player.SetActive(true);
+        }
             scoretext.text = score.ToString();
             if (Plano.seguidas == 10)
             {
@@ -62,8 +83,8 @@ public class Score : MonoBehaviour
             {
                 PlayerPrefs.SetInt("highscore", score);
                 highscoreimg.gameObject.SetActive(true);
-                scoretext.color = new Color(84f / 255f, 225f / 255f, 178f / 255f);
-
+                scoretext.color = new Color(Random.Range(0, 256) / 255f, Random.Range(0, 256) / 255f, Random.Range(0,256) / 255f);
+                
             }
             if (setVidas == 0)
             {
@@ -80,11 +101,25 @@ public class Score : MonoBehaviour
                 }
                 if (timer > 4)
                 {
-                    Application.LoadLevel("derrota");
+                    gameoveer = true; 
                 }
             }
 
         
+    }
+    public void clicknoX()
+    {
+        showbutton = false;
+        setVidas--;
+        GameObject.FindGameObjectWithTag("botaoPropa").SetActive(false);
+    }
+    public void clicknoX2()
+    {
+        showbutton = false;
+        setVidas--;
+        Debug.Log("sk");
+        Destroy(GameObject.FindGameObjectWithTag("botaoPropa"));
+        GameObject.Find("naoskip").SetActive(false);
     }
     public int setScore
 	{

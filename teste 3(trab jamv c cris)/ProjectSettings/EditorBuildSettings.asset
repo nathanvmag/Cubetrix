@@ -13,3 +13,5 @@ EditorBuildSettings:
     path: Assets/scenes/derrota.unity
   - enabled: 1
     path: Assets/scenes/creditos.unity
+  - enabled: 1
+    path: Assets/scenes/load.unity

@@ -31,27 +31,27 @@ public class Player : MonoBehaviour
             }
 
             gameObject.SetActive(true);
-            if (Input.GetKeyDown("left") || touchh.esq)
+            if (Input.GetKeyDown("left") || touchV2.esq)
             {
-                touchh.esq = false; 
+                touchV2.esq = false; 
                 transform.Rotate(0, 90, 0, Space.World);
             }
 
-            if (Input.GetKeyDown("right") || touchh.dir)
+            if (Input.GetKeyDown("right") || touchV2.dir)
             {
                 transform.Rotate(0, -90, 0, Space.World);
-                touchh.dir = false;
+                touchV2.dir = false;
             }
 
-            if (Input.GetKeyDown("up") || touchh.cima)
+            if (Input.GetKeyDown("up") || touchV2.cima)
             {
-                touchh.cima = false; 
+                touchV2.cima = false; 
                 transform.Rotate(0, 0, -90, Space.World);
             }
 
-            if (Input.GetKeyDown("down") || touchh.baixo)
+            if (Input.GetKeyDown("down") || touchV2.baixo)
             {
-                touchh.baixo = false; 
+                touchV2.baixo = false; 
                 transform.Rotate(0, 0, 90, Space.World);
             }
             if (scriptscore.setVidas == 0 )

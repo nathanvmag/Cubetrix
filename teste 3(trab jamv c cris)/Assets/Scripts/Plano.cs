@@ -19,6 +19,7 @@ public class Plano  : MonoBehaviour {
     public static int seguidas = 0;
     public AudioClip passou,explo;
     AudioSource audio;
+   
 	// Use this for initialization
 	void Start () {
         audio = GetComponent<AudioSource>();
@@ -40,7 +41,7 @@ public class Plano  : MonoBehaviour {
         if (!Pause.pause &&!Score.showbutton)
         {
             
-            if (Input.GetKey(KeyCode.Space)|| touchh.aperto)
+            if (Input.GetKey(KeyCode.Space)|| touchV2.aperto)
             {
                speed = 10;
 
@@ -51,7 +52,7 @@ public class Plano  : MonoBehaviour {
                // Debug.Log(speed);
             }
             transform.position = Vector3.MoveTowards(transform.position, alvo.transform.position, speed * Time.deltaTime);
-            if (localplayer.transform.position.x == transform.position.x)
+            if (localplayer.transform.position.x >= transform.position.x)
             {
                 bool acertou;
                 if (player != null && ObjComparar != null)
@@ -80,7 +81,9 @@ public class Plano  : MonoBehaviour {
                        // Debug.Log("Fail a peca se chama " + ObjComparar.gameObject.name + "e a rotacao " + ObjComparar.transform.rotation + "player " + player.transform.rotation);
                         if (score.setVidas-1==0&&!Score.mostro)
                         {
-                            if (4 == 4) Score.showbutton = true;
+                            int rand = Random.Range(0, 3);
+                            Debug.Log("o rand é " + rand);
+                            if (rand == 1) Score.showbutton = true;
                             else score.setVidas--;
                             Debug.Log("veio\a");
                         }

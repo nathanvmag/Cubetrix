@@ -1084,7 +1084,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1364826890}
   - 212: {fileID: 1364826889}
-  - 114: {fileID: 1364826891}
   m_Layer: 0
   m_Name: fade
   m_TagString: Untagged
@@ -1130,19 +1129,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
---- !u!114 &1364826891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1364826888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bb0361394eff87428cbf444a057819f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zoneId: 
-  rewardQty: 250
 --- !u!1001 &1490186707
 Prefab:
   m_ObjectHideFlags: 0

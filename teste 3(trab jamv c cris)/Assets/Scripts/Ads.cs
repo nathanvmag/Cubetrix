@@ -5,7 +5,7 @@ public class Ads : MonoBehaviour {
     
 	// Use this for initialization
 	void Awake () {
-        Advertisement.Initialize("1082397",true);
+        Advertisement.Initialize("1082397");
         
 	}
 	

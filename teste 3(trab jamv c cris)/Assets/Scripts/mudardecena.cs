@@ -11,7 +11,8 @@ public class mudardecena : MonoBehaviour {
         carregar = false;
         carrecredito = false;
         carregamenu = false;
-        carregajogo = false; 
+        carregajogo = false;
+        
 	}
 	
 	// Update is called once per frame
@@ -30,7 +31,7 @@ public class mudardecena : MonoBehaviour {
         {
             
             {
-                if (fadeeout())Application.LoadLevelAsync("GrandeGame");
+                if (fadeeout())Application.LoadLevelAsync("load");
             }
         }
 	}	

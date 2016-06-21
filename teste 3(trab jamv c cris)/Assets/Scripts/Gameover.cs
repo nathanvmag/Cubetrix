@@ -6,7 +6,8 @@ public class Gameover : MonoBehaviour {
     public Text score, highscore;
     bool restartgame, gomenu;
     public GameObject hsnew;
-    int antigohighscore; 
+    int antigohighscore;
+    bool AdShow;
 	// Use this for initialization
     void Awake()
     {
@@ -29,28 +30,36 @@ public class Gameover : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(!AdShow)
+        {
         if (gomenu)
         {
             if (mudardecena.fadeeout()) Application.LoadLevel("Menu");
         }
         if (restartgame)
         {
-            if (mudardecena.fadeeout()) Application.LoadLevel("GrandeGame");
+            if (mudardecena.fadeeout()) Application.LoadLevel("load");
+        }
         }
 	
 	}
     public void btreload()
     {
         restartgame = true;
-        if (Random.Range(0, 10) == 10)
+        int rand = Random.Range(0, 6);
+        Debug.Log(rand);
+        if (rand == 3)
         {
+            Debug.Log("propagana");
             StartCoroutine(ShowAdWhenReady());
         }
     }
     public void voltaMenu()
     {
         gomenu = true;
-        if (Random.Range(0, 10) == 10)
+        int rand = Random.Range(0, 5);
+        Debug.Log(rand);
+        if (rand == 1)
         {
             StartCoroutine(ShowAdWhenReady());
         }
@@ -60,6 +69,28 @@ public class Gameover : MonoBehaviour {
         while (!Advertisement.isReady())
             yield return null;
 
-        Advertisement.Show();
+        
+        ShowOptions options = new ShowOptions();
+        options.resultCallback = HandleShowResult;
+        Advertisement.Show("",options);
+        AdShow = true  ; 
+    }
+    private void HandleShowResult(ShowResult result)
+    {
+        switch (result)
+        {
+            case ShowResult.Finished:                               
+                AdShow= false;
+                Debug.Log("foi");
+                break;
+            case ShowResult.Skipped:
+                Debug.Log("eita");
+                AdShow= false;
+                break;
+            case ShowResult.Failed:
+                Debug.Log("ah");
+                AdShow= false;
+                break;
+        }
     }
 }
