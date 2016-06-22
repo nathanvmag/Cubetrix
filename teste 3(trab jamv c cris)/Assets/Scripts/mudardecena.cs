@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public class mudardecena : MonoBehaviour {
     GameObject fadein;
     float alpha;
-    bool carregar, carrecredito, carregamenu,carregajogo; 
+    bool carregar, carrecredito, carregamenu,carregajogo;
+    public Sprite[] soundd; 
+    public static bool sound = true ; 
 	// Use this for initialization
 	void Start () {
         fadein = GameObject.Find("fade");
@@ -12,11 +14,14 @@ public class mudardecena : MonoBehaviour {
         carrecredito = false;
         carregamenu = false;
         carregajogo = false;
+      
         
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (sound)Camera.main.GetComponent<AudioListener>().enabled = true;
+        else Camera.main.GetComponent<AudioListener>().enabled = false ; 
         if (carrecredito)
         {            
             if (fadeeout()) Application.LoadLevelAsync("creditos");
@@ -52,6 +57,14 @@ public class mudardecena : MonoBehaviour {
         carregamenu = true;
         GameObject.Find("Button").SetActive(false);
 	    Debug.Log ("volto");
+    }
+    public void clicksom()
+    {
+        int qualimg; 
+        sound = !sound;
+        if (sound) qualimg = 0;
+        else qualimg = 1;
+        GameObject.Find("sound").GetComponent<Image>().sprite = soundd[qualimg];      
     }
     public static bool fadeeout()
     {

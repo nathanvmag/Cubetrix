@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Advertisements;
-
+using UnityEngine.UI; 
 
 public class Pause : MonoBehaviour {
     public static bool pause;
     public GameObject pausebt;
-   public GameObject[] pauseUi;
-   bool restargame, carregamenu;
-   bool AdShow; 
+    public GameObject[] pauseUi;
+    bool restargame, carregamenu;
+    bool AdShow;
+    public Sprite[] soundd; 
 	void Start () {
         pause = false;
         pausebt = GameObject.Find("pausebt");
@@ -22,7 +23,9 @@ public class Pause : MonoBehaviour {
 	// Update is called once per frame
     void Update()
     {
-        
+
+        if (mudardecena.sound) Camera.main.GetComponent<AudioListener>().enabled = true;
+        else Camera.main.GetComponent<AudioListener>().enabled = false; 
         if (Input.GetKeyDown(KeyCode.Escape)) pause = !pause;
         if (!AdShow)
         {
@@ -108,6 +111,14 @@ public class Pause : MonoBehaviour {
                  StartCoroutine(ShowAdWhenReady());
              }
          }
+    public void clicksom()
+    {
+        int qualimg;
+        mudardecena.sound = !mudardecena.sound;
+        if (mudardecena.sound) qualimg = 0;
+        else qualimg = 1;
+        GameObject.Find("sound").GetComponent<Image>().sprite = soundd[qualimg];
+    }
     public void btPause()
          {
              pause = true; 

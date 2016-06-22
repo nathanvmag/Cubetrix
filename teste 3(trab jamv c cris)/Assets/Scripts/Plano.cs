@@ -17,7 +17,7 @@ public class Plano  : MonoBehaviour {
     public static float  speedantiga;
     public Material[] skyboxes; 
     public static int seguidas = 0;
-    public AudioClip passou,explo;
+    public AudioClip passou,explo,erro,winlife;
     AudioSource audio;
    
 	// Use this for initialization
@@ -72,7 +72,8 @@ public class Plano  : MonoBehaviour {
                         if (score.setScore % 10 == 0) RenderSettings.skybox = skyboxes[Random.Range(0, skyboxes.Length)];
                         if (speed != 10 ) speedantiga = speed;
                         seguidas++;
-                        audio.PlayOneShot(passou);
+                        if (seguidas == 10) audio.PlayOneShot(winlife);
+                        else audio.PlayOneShot(passou);
                         
                     }
                     else
@@ -88,7 +89,8 @@ public class Plano  : MonoBehaviour {
                             Debug.Log("veio\a");
                         }
                         else score.setVidas--;
-                        seguidas = 0; 
+                        seguidas = 0;
+                        audio.PlayOneShot(erro);
                     }
                 }
                 if (ObjComparar != null) Destroy(ObjComparar.gameObject);

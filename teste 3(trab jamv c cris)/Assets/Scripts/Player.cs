@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (mudardecena.sound) Camera.main.GetComponent<AudioListener>().enabled = true;
+        else Camera.main.GetComponent<AudioListener>().enabled = false; 
+
         if (!Pause.pause && !Score.showbutton)
         {
             protectbug = GameObject.FindGameObjectsWithTag("player");

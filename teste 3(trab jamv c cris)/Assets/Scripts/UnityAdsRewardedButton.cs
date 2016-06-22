@@ -4,7 +4,7 @@ using UnityEngine.Advertisements;
 
 public class UnityAdsRewardedButton : MonoBehaviour
 {
-    public string zoneId= "1";
+    public string zoneId= "rd";
     public int rewardQty = 250;
     private Score score;
     public GameObject menuskip; 
