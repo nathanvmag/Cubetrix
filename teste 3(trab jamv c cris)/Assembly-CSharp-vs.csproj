@@ -51,9 +51,11 @@
      <Compile Include="Assets\Scripts\Ads.cs" />
      <Compile Include="Assets\Scripts\Carregando.cs" />
      <Compile Include="Assets\Scripts\Gameover.cs" />
+     <Compile Include="Assets\Scripts\Name.cs" />
      <Compile Include="Assets\Scripts\Pause.cs" />
      <Compile Include="Assets\Scripts\Plano.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\SaveHS.cs" />
      <Compile Include="Assets\Scripts\Score.cs" />
      <Compile Include="Assets\Scripts\Shake.cs" />
      <Compile Include="Assets\Scripts\UnityAdsRewardedButton.cs" />
@@ -78,6 +80,9 @@
      <None Include="Assets\Plugins\Android\unityads\AndroidManifest.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="App42-Unity3D-SDK-4.1.2">
+ <HintPath>C:/Users/Nathan/Documents/GitHub/Cubetrix/teste 3(trab jamv c cris)/Assets/App42-Unity3D-SDK-4.1.2.dll</HintPath>
  </Reference>
  <Reference Include="EasyGesture">
  <HintPath>C:/Users/Nathan/Documents/GitHub/Cubetrix/teste 3(trab jamv c cris)/Assets/EasyGesture/Plugins/EasyGesture.dll</HintPath>

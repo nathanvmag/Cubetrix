@@ -12,6 +12,10 @@ TagManager:
   - menu
   - player
   - botaoPropa
+  - localhs
+  - rank
+  - name
+  - scr
   layers:
   - Default
   - TransparentFX

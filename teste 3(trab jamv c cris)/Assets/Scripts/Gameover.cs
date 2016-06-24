@@ -8,10 +8,14 @@ public class Gameover : MonoBehaviour {
     public GameObject hsnew;
     int antigohighscore;
     bool AdShow;
+    public Camera cam;
+    public Canvas cav; 
 	// Use this for initialization
     void Awake()
     {
         Advertisement.Initialize("1082397");
+        PlayerPrefs.SetString("nome", "nathan");
+      
     }
 	void Start () {
         score.text = PlayerPrefs.GetInt("score").ToString();
@@ -92,5 +96,11 @@ public class Gameover : MonoBehaviour {
                 AdShow= false;
                 break;
         }
+    }
+    public void ranking()
+    {
+        cam.depth = 3;
+        cav.gameObject.SetActive(false); 
+
     }
 }

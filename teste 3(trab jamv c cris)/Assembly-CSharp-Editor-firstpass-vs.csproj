@@ -84,6 +84,9 @@
  <Reference Include="UnityEditor.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
  </Reference>
+ <Reference Include="App42-Unity3D-SDK-4.1.2">
+ <HintPath>C:/Users/Nathan/Documents/GitHub/Cubetrix/teste 3(trab jamv c cris)/Assets/App42-Unity3D-SDK-4.1.2.dll</HintPath>
+ </Reference>
  <Reference Include="EasyGesture">
  <HintPath>C:/Users/Nathan/Documents/GitHub/Cubetrix/teste 3(trab jamv c cris)/Assets/EasyGesture/Plugins/EasyGesture.dll</HintPath>
  </Reference>
