@@ -22,7 +22,9 @@ public class Score : MonoBehaviour
     public static bool click;
     public Text time;
     public GameObject menupropa;
-    bool gameoveer; 
+    bool gameoveer;
+    public Font block;
+    public Text pausetx; 
     // Use this for initialization
     void Start()
     {
@@ -34,7 +36,10 @@ public class Score : MonoBehaviour
         showbutton = false;
         mostro = false;
         t = 7;
-        gameoveer = false; 
+        gameoveer = false;
+        block = Resources.Load("Blox2") as Font;
+        scoretext.font = block;
+        pausetx.font = block;
     }
 
     // Update is called once per frame

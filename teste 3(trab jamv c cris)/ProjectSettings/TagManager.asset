@@ -16,6 +16,7 @@ TagManager:
   - rank
   - name
   - scr
+  - medalhas
   layers:
   - Default
   - TransparentFX

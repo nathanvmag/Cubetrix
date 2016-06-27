@@ -14,7 +14,7 @@ public class Gameover : MonoBehaviour {
     void Awake()
     {
         Advertisement.Initialize("1082397");
-        PlayerPrefs.SetString("nome", "nathan");
+       
       
     }
 	void Start () {

@@ -231,11 +231,11 @@ GameObject:
   - 114: {fileID: 95411819}
   m_Layer: 5
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: medalhas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &95411818
 RectTransform:
   m_ObjectHideFlags: 0
@@ -909,11 +909,11 @@ GameObject:
   - 114: {fileID: 323799013}
   m_Layer: 5
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: medalhas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &323799012
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2298,7 +2298,9 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11490380, guid: e663d3c04c64504499b5f9e556973187, type: 2}
       propertyPath: m_Text
-      value: 1
+      value: '
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 6144058, guid: e663d3c04c64504499b5f9e556973187, type: 2}
       propertyPath: m_Offset.y
@@ -2330,11 +2332,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11431602, guid: e663d3c04c64504499b5f9e556973187, type: 2}
       propertyPath: m_Text
-      value: 1
+      value: '
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 11400586, guid: e663d3c04c64504499b5f9e556973187, type: 2}
       propertyPath: m_Text
-      value: aladin
+      value: '
+
+'
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6144058, guid: e663d3c04c64504499b5f9e556973187, type: 2}
@@ -4412,11 +4418,11 @@ GameObject:
   - 114: {fileID: 1804317520}
   m_Layer: 5
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: medalhas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1804317519
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4697,7 +4703,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11490380, guid: e663d3c04c64504499b5f9e556973187, type: 2}
       propertyPath: m_Text
-      value: 1
+      value: ' '
       objectReference: {fileID: 0}
     - target: {fileID: 6144058, guid: e663d3c04c64504499b5f9e556973187, type: 2}
       propertyPath: m_Offset.y
@@ -4729,11 +4735,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11431602, guid: e663d3c04c64504499b5f9e556973187, type: 2}
       propertyPath: m_Text
-      value: 1
+      value: ' '
       objectReference: {fileID: 0}
     - target: {fileID: 11400586, guid: e663d3c04c64504499b5f9e556973187, type: 2}
       propertyPath: m_Text
-      value: aladin
+      value: ' '
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6144058, guid: e663d3c04c64504499b5f9e556973187, type: 2}
@@ -5007,7 +5013,9 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11490380, guid: e663d3c04c64504499b5f9e556973187, type: 2}
       propertyPath: m_Text
-      value: 1
+      value: '
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 6144058, guid: e663d3c04c64504499b5f9e556973187, type: 2}
       propertyPath: m_Offset.y
@@ -5035,11 +5043,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11431602, guid: e663d3c04c64504499b5f9e556973187, type: 2}
       propertyPath: m_Text
-      value: 1
+      value: '
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 11400586, guid: e663d3c04c64504499b5f9e556973187, type: 2}
       propertyPath: m_Text
-      value: aladin
+      value: '
+
+'
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6144058, guid: e663d3c04c64504499b5f9e556973187, type: 2}

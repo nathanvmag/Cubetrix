@@ -27,8 +27,8 @@ public class SaveHS : MonoBehaviour {
     bool salvou;
     static public Image render;
    static public Sprite[] error = new Sprite[2]; 
-   Dictionary<String, String> otherMetaHeaders = new Dictionary<String, String>();  
-    
+   Dictionary<String, String> otherMetaHeaders = new Dictionary<String, String>();
+   public static bool salvouhs; 
     
    // otherMetaHeaders.Add("orderByAscending", "score");
     
@@ -37,10 +37,7 @@ public class SaveHS : MonoBehaviour {
 
     {
         otherMetaHeaders.Add("orderByDescending", "score");
-        if (PlayerPrefs.GetInt("antigohigh")<PlayerPrefs.GetInt("highscore"))
-        {
-            salvar = true; 
-        }
+        salvar = true; 
                 }
 	void Start () {
         App42API.Initialize(key,secretkey);
@@ -54,8 +51,7 @@ public class SaveHS : MonoBehaviour {
         {
             scoreboardserv.SaveUserScore(gamename, name, highscore,new savehigh()); 
         }
-        scoreboardserv.SetOtherMetaHeaders(otherMetaHeaders);
-        scoreboardserv.GetTopNRankers(gamename, maxplayers, new toprank());
+       
         render = GameObject.Find("hsImg").GetComponent<Image>();
         error[0] = bla[0];
         error[1] = bla[1];
@@ -75,7 +71,12 @@ public class SaveHS : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+	    if (salvouhs)
+        {
+            scoreboardserv.SetOtherMetaHeaders(otherMetaHeaders);
+            scoreboardserv.GetTopNRankers(gamename, maxplayers, new toprank());
+            salvouhs = false; 
+        }
 	}
     public void clicou()
     {
@@ -109,7 +110,8 @@ public class savehigh: App42CallBack
         for (int i = 0; i < game.GetScoreList().Count; i++)
         {
             App42Log.Console("userName is : " + game.GetScoreList()[i].GetUserName());
-            App42Log.Console("score is : " + game.GetScoreList()[i].GetValue());           
+            App42Log.Console("score is : " + game.GetScoreList()[i].GetValue());
+            SaveHS.salvouhs = true; 
         }
     }
 

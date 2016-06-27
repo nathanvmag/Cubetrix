@@ -46,6 +46,16 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Plugins\UnityAnalytics\AndroidWrapper.cs" />
+     <Compile Include="Assets\Plugins\UnityAnalytics\PlatformWrapper.cs" />
+     <Compile Include="Assets\Plugins\UnityAnalytics\UnityAnalytics.cs" />
+     <Compile Include="Assets\Plugins\UnityAnalytics\UnityAnalyticsBuildHooks.cs" />
+     <Compile Include="Assets\Plugins\UnityAnalytics\UnityAnalyticsEditor.cs" />
+     <Compile Include="Assets\Plugins\UnityAnalytics\WebGLWrapper.cs" />
+     <Compile Include="Assets\Plugins\UnityAnalytics\WebPlayerWrapper.cs" />
+     <Compile Include="Assets\Plugins\UnityAnalytics\WindowsFileSystem.cs" />
+     <Compile Include="Assets\Plugins\UnityAnalytics\WindowsMetroWrapper.cs" />
+     <Compile Include="Assets\Plugins\UnityAnalytics\iOSWrapper.cs" />
      <Compile Include="Assets\Standard Assets\UnityAds\Scripts\Advertisement.cs" />
      <Compile Include="Assets\Standard Assets\UnityAds\Scripts\Advertisements\Misc\AsyncExec.cs" />
      <Compile Include="Assets\Standard Assets\UnityAds\Scripts\Advertisements\Misc\MiniJSON.cs" />
@@ -83,6 +93,12 @@
  </Reference>
  <Reference Include="EasyGesture">
  <HintPath>C:/Users/Nathan/Documents/GitHub/Cubetrix/teste 3(trab jamv c cris)/Assets/EasyGesture/Plugins/EasyGesture.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Cloud.Analytics">
+ <HintPath>C:/Users/Nathan/Documents/GitHub/Cubetrix/teste 3(trab jamv c cris)/Assets/Plugins/UnityEngine.Cloud.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Cloud.Analytics.Util">
+ <HintPath>C:/Users/Nathan/Documents/GitHub/Cubetrix/teste 3(trab jamv c cris)/Assets/Plugins/UnityEngine.Cloud.Analytics.Util.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

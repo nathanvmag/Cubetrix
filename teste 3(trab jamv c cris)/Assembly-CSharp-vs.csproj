@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\Score.cs" />
      <Compile Include="Assets\Scripts\Shake.cs" />
      <Compile Include="Assets\Scripts\UnityAdsRewardedButton.cs" />
+     <Compile Include="Assets\Scripts\UnityAnalyticsIntegration.cs" />
      <Compile Include="Assets\Scripts\giramentodapeca.cs" />
      <Compile Include="Assets\Scripts\mudardecena.cs" />
      <Compile Include="Assets\Scripts\objectcomp.cs" />
@@ -86,6 +87,12 @@
  </Reference>
  <Reference Include="EasyGesture">
  <HintPath>C:/Users/Nathan/Documents/GitHub/Cubetrix/teste 3(trab jamv c cris)/Assets/EasyGesture/Plugins/EasyGesture.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Cloud.Analytics">
+ <HintPath>C:/Users/Nathan/Documents/GitHub/Cubetrix/teste 3(trab jamv c cris)/Assets/Plugins/UnityEngine.Cloud.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Cloud.Analytics.Util">
+ <HintPath>C:/Users/Nathan/Documents/GitHub/Cubetrix/teste 3(trab jamv c cris)/Assets/Plugins/UnityEngine.Cloud.Analytics.Util.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
