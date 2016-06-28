@@ -46,16 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Plugins\UnityAnalytics\AndroidWrapper.cs" />
-     <Compile Include="Assets\Plugins\UnityAnalytics\PlatformWrapper.cs" />
-     <Compile Include="Assets\Plugins\UnityAnalytics\UnityAnalytics.cs" />
-     <Compile Include="Assets\Plugins\UnityAnalytics\UnityAnalyticsBuildHooks.cs" />
-     <Compile Include="Assets\Plugins\UnityAnalytics\UnityAnalyticsEditor.cs" />
-     <Compile Include="Assets\Plugins\UnityAnalytics\WebGLWrapper.cs" />
-     <Compile Include="Assets\Plugins\UnityAnalytics\WebPlayerWrapper.cs" />
-     <Compile Include="Assets\Plugins\UnityAnalytics\WindowsFileSystem.cs" />
-     <Compile Include="Assets\Plugins\UnityAnalytics\WindowsMetroWrapper.cs" />
-     <Compile Include="Assets\Plugins\UnityAnalytics\iOSWrapper.cs" />
      <Compile Include="Assets\Standard Assets\UnityAds\Scripts\Advertisement.cs" />
      <Compile Include="Assets\Standard Assets\UnityAds\Scripts\Advertisements\Misc\AsyncExec.cs" />
      <Compile Include="Assets\Standard Assets\UnityAds\Scripts\Advertisements\Misc\MiniJSON.cs" />

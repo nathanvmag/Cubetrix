@@ -59,7 +59,6 @@
      <Compile Include="Assets\Scripts\Score.cs" />
      <Compile Include="Assets\Scripts\Shake.cs" />
      <Compile Include="Assets\Scripts\UnityAdsRewardedButton.cs" />
-     <Compile Include="Assets\Scripts\UnityAnalyticsIntegration.cs" />
      <Compile Include="Assets\Scripts\giramentodapeca.cs" />
      <Compile Include="Assets\Scripts\mudardecena.cs" />
      <Compile Include="Assets\Scripts\objectcomp.cs" />
