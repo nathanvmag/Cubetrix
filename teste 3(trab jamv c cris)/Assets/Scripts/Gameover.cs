@@ -5,7 +5,7 @@ using UnityEngine.Advertisements;
 public class Gameover : MonoBehaviour {
     public Text score, highscore;
     bool restartgame, gomenu;
-    public GameObject hsnew;
+  
     int antigohighscore;
     bool AdShow;
     public Camera cam;
@@ -22,12 +22,13 @@ public class Gameover : MonoBehaviour {
         highscore.text = PlayerPrefs.GetInt("highscore").ToString();
         restartgame = false ;
         gomenu = false;
-        Debug.Log(antigohighscore);
+        if (mudardecena.sound) Camera.main.GetComponent<AudioListener>().enabled = false;
+        else Camera.main.GetComponent<AudioListener>().enabled = false;
         antigohighscore=  antigohighscore ==null ? 0:  PlayerPrefs.GetInt("antigohigh");
         if (antigohighscore < PlayerPrefs.GetInt("highscore"))
         {
             antigohighscore = PlayerPrefs.GetInt("highscore");
-           hsnew.SetActive(true);
+           
         }
         PlayerPrefs.SetInt("antigohigh", antigohighscore);
 	}

@@ -118,6 +118,7 @@ public class savehigh: App42CallBack
     public void OnException(Exception e)
     {
         App42Log.Console("Exception : " + e);
+        SaveHS.render.sprite = SaveHS.error[1]; 
     }
 }
 public class toprank : App42CallBack

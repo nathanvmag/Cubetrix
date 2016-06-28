@@ -18,7 +18,7 @@ public class Name : MonoBehaviour {
             digname.SetActive(true);
 
         }
-       if (GameObject.Find("playername").GetComponent<Text>().text == "")
+        if (GameObject.Find("playername") != null && GameObject.Find("playername").GetComponent<Text>().text == "" )
        {
            btOk.SetActive(false);
        }
