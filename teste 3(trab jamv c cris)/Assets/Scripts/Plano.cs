@@ -19,7 +19,7 @@ public class Plano  : MonoBehaviour {
     public static int seguidas = 0;
     public AudioClip passou,explo,erro,winlife;
     AudioSource audio;
-   
+
 	// Use this for initialization
 	void Start () {
         audio = GetComponent<AudioSource>();
@@ -40,6 +40,7 @@ public class Plano  : MonoBehaviour {
     {
         if (!Pause.pause &&!Score.showbutton)
         {
+			Debug.Log (speed);
             
             if (Input.GetKey(KeyCode.Space)|| touchV2.aperto)
             {
@@ -67,10 +68,10 @@ public class Plano  : MonoBehaviour {
                     if (acertou)
                     {
                        // Debug.Log("Valeu = a peca se chama " + ObjComparar.gameObject.name + "e a rotacao " + ObjComparar.transform.rotation + "player " + player.transform.rotation);
-                        speed = speed >= 10f ? speed = 10f : speed + 0.2f;
+                        speed = speed >= 10f ? speed = 10f : speedantiga + 0.1f;
                         score.setScore += 1;
                         if (score.setScore % 10 == 0) RenderSettings.skybox = skyboxes[Random.Range(0, skyboxes.Length)];
-                        if (speed != 10 ) speedantiga = speed;
+                        if (speed < 10 ) speedantiga = speed;
                         seguidas++;
                         if (seguidas == 10) audio.PlayOneShot(winlife);
                         else audio.PlayOneShot(passou);
@@ -112,7 +113,14 @@ public class Plano  : MonoBehaviour {
     }
      void OnTriggerEnter(Collider coll)
     {
-       
+       if (coll.gameObject.tag == "plano") {
+			Debug.Log ("Aee");
+			controle = 0; 
+			Vector3 posi = ObjComparar.transform.position;
+			voltaOrdem();
+				ObjComparar.transform.parent = GameObject.Find("Plane0").transform;
+			ObjComparar.transform.position = posi;
+		}
     }
 	void newbloco()
 	{
@@ -141,5 +149,15 @@ public class Plano  : MonoBehaviour {
 		else if (rand == 3)
 			copy.transform.Translate (Vector3.down * 0.5f);
 
-	}	
+	}
+	void voltaOrdem()
+	{
+		for (int i= 0; i<4; i++) {
+			if (i == 0) {
+				GameObject.Find ("Plane" + i).transform.position = ObjComparar.transform.parent.position;
+			}
+			GameObject.Find("Plane"+i).transform.position = new Vector3 (5 + (i*20),transform.position.y,transform.position.z);
+		}
+	}
+
 }

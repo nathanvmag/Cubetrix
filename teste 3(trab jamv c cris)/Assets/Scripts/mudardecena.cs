@@ -7,6 +7,8 @@ public class mudardecena : MonoBehaviour {
     bool carregar, carrecredito, carregamenu,carregajogo;
     public Sprite[] soundd; 
     public static bool sound = true ; 
+	public GameObject botoes,config; 
+	public Text low,med,high,best; 
 	// Use this for initialization
 	void Start () {
         fadein = GameObject.Find("fade");
@@ -81,8 +83,51 @@ public class mudardecena : MonoBehaviour {
         }
         return true; 
     }
+	public void clickconfig(int i) 
+	{
+		if (i == 0) {
+			config.SetActive (true); 
+			botoes.SetActive (false);
+		} else {
+			config.SetActive(false); 
+			botoes.SetActive(true);
+		}
+	}
+	public void qualitySettings(int i)
+	{
+		switch (i) {
+		case 0:
+			QualitySettings.SetQualityLevel(i);
+			low.color = Color.white;
+			med.color= Color.black; 
+			best.color= Color.black; 
+			high.color= Color.black; 
+			break;
+		case 1:
+			QualitySettings.SetQualityLevel(i+1);
+			low.color = Color.black;
+			med.color= Color.white; 
+			best.color= Color.black; 
+			high.color= Color.black; 
+			break;
+		case 2:
+			QualitySettings.SetQualityLevel(i+1);
+			low.color = Color.black;
+			med.color= Color.black; 
+			best.color= Color.black; 
+			high.color= Color.white; 
+			break;
+		case 3:
+			QualitySettings.SetQualityLevel(i+2);
+			low.color = Color.black;
+			med.color= Color.black; 
+			best.color= Color.white; 
+			high.color= Color.black; 
+			break;
+		}
 
         
+	}
 
     }
 

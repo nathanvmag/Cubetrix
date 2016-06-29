@@ -17,6 +17,7 @@ TagManager:
   - name
   - scr
   - medalhas
+  - plano
   layers:
   - Default
   - TransparentFX

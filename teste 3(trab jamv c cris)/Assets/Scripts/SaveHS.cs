@@ -47,6 +47,8 @@ public class SaveHS : MonoBehaviour {
         gameserv.GetGameByName(gamename, new gameCallback());
         highscore = PlayerPrefs.GetInt("highscore");
         name = PlayerPrefs.GetString("nome"); 
+		if (name == "")
+			salvar = false; 
         if (salvar)
         {
             scoreboardserv.SaveUserScore(gamename, name, highscore,new savehigh()); 
