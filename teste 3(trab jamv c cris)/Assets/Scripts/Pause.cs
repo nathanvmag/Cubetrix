@@ -9,7 +9,8 @@ public class Pause : MonoBehaviour {
     public GameObject[] pauseUi;
     bool restargame, carregamenu;
     bool AdShow;
-    public Sprite[] soundd; 
+	public Camera cam ; 
+   
 	void Start () {
         pause = false;
         pausebt = GameObject.Find("pausebt");
@@ -31,6 +32,7 @@ public class Pause : MonoBehaviour {
         {
             if (restargame)
             {
+				cam.depth = -3;
                 if (mudardecena.fadeeout())
                 {
 
@@ -39,6 +41,7 @@ public class Pause : MonoBehaviour {
             }
             if (carregamenu)
             {
+				cam.depth = -3;
                 if (mudardecena.fadeeout())
                 {
 
@@ -117,7 +120,7 @@ public class Pause : MonoBehaviour {
         mudardecena.sound = !mudardecena.sound;
         if (mudardecena.sound) qualimg = 0;
         else qualimg = 1;
-        GameObject.Find("sound").GetComponent<Image>().sprite = soundd[qualimg];
+       
     }
     public void btPause()
          {

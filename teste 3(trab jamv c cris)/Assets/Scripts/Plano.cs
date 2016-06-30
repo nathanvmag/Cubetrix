@@ -68,7 +68,15 @@ public class Plano  : MonoBehaviour {
                     if (acertou)
                     {
                        // Debug.Log("Valeu = a peca se chama " + ObjComparar.gameObject.name + "e a rotacao " + ObjComparar.transform.rotation + "player " + player.transform.rotation);
-                        speed = speed >= 10f ? speed = 10f : speedantiga + 0.1f;
+						if (speed >= 10) {
+							speed = 10; 
+							if (speed < 7) {
+								speedantiga += 0.1f;
+							}
+
+						} else if (speed<7) {
+							speed += 0.1f;
+						}
                         score.setScore += 1;
                         if (score.setScore % 10 == 0) RenderSettings.skybox = skyboxes[Random.Range(0, skyboxes.Length)];
                         if (speed < 10 ) speedantiga = speed;
@@ -78,7 +86,7 @@ public class Plano  : MonoBehaviour {
                         
                     }
                     else
-                    {
+					{ 	if (speed>=3)
                         speed -= 0.4f;
                        // Debug.Log("Fail a peca se chama " + ObjComparar.gameObject.name + "e a rotacao " + ObjComparar.transform.rotation + "player " + player.transform.rotation);
                         if (score.setVidas-1==0&&!Score.mostro)

@@ -2,13 +2,16 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Name.cs">
     <Files>
-      <File FileName="Assets\Scripts\giramentodapeca.cs" Line="16" Column="3" />
+      <File FileName="Assets\Scripts\Name.cs" Line="21" Column="4" />
+      <File FileName="Assets\Scripts\giramentodapeca.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Plano.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Name.cs" Line="16" Column="3" />
-      <File FileName="Assets\Scripts\mudardecena.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\mudardecena.cs" Line="13" Column="2" />
       <File FileName="Assets\Scripts\Score.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player.cs" Line="1" Column="1" />
       <File FileName="..\..\teste touch\Assets\touch.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SaveHS.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Pause.cs" Line="44" Column="20" />
+      <File FileName="Assets\Scripts\Fps.cs" Line="25" Column="25" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

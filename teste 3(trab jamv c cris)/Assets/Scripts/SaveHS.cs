@@ -37,22 +37,23 @@ public class SaveHS : MonoBehaviour {
 
     {
         otherMetaHeaders.Add("orderByDescending", "score");
-        salvar = true; 
-                }
+       
+    }
 	void Start () {
         App42API.Initialize(key,secretkey);
         gameserv = App42API.BuildGameService();
         scoreboardserv = App42API.BuildScoreBoardService();
         App42Log.SetDebug(true);
         gameserv.GetGameByName(gamename, new gameCallback());
+		if (PlayerPrefs.HasKey("highscore"))
         highscore = PlayerPrefs.GetInt("highscore");
-        name = PlayerPrefs.GetString("nome"); 
-		if (name == "")
-			salvar = false; 
-        if (salvar)
-        {
+       
+		if (PlayerPrefs.HasKey("nome")	)
+			{
+			name = PlayerPrefs.GetString("nome"); 
             scoreboardserv.SaveUserScore(gamename, name, highscore,new savehigh()); 
-        }
+			Debug.Log ("salva ai com nome " + name + " e com score " + highscore);
+			}
        
         render = GameObject.Find("hsImg").GetComponent<Image>();
         error[0] = bla[0];
@@ -78,6 +79,7 @@ public class SaveHS : MonoBehaviour {
             scoreboardserv.SetOtherMetaHeaders(otherMetaHeaders);
             scoreboardserv.GetTopNRankers(gamename, maxplayers, new toprank());
             salvouhs = false; 
+			Debug.Log ("vai pegar HS");
         }
 	}
     public void clicou()
@@ -101,6 +103,8 @@ public class gameCallback : App42CallBack
     public void OnException(Exception e)
     {
         App42Log.Console("Exception : " + e);
+		Debug.Log ("semnome");
+		SaveHS.render.sprite = SaveHS.error[1]; 
     }  
 }
 public class savehigh: App42CallBack
@@ -109,11 +113,13 @@ public class savehigh: App42CallBack
     {
         Game game = (Game)response;
         App42Log.Console("gameName is " + game.GetName());
+
         for (int i = 0; i < game.GetScoreList().Count; i++)
         {
-            App42Log.Console("userName is : " + game.GetScoreList()[i].GetUserName());
-            App42Log.Console("score is : " + game.GetScoreList()[i].GetValue());
+			//App42Log.Console("userName is : " + game.GetScoreList()[i].GetUserName());
+           // App42Log.Console("score is : " + game.GetScoreList()[i].GetValue());
             SaveHS.salvouhs = true; 
+			Debug.Log ("salvo");
         }
     }
 
@@ -121,6 +127,7 @@ public class savehigh: App42CallBack
     {
         App42Log.Console("Exception : " + e);
         SaveHS.render.sprite = SaveHS.error[1]; 
+		Debug.Log ("nemsalvo");
     }
 }
 public class toprank : App42CallBack
@@ -136,10 +143,11 @@ public class toprank : App42CallBack
             SaveHS.ranks[ i].text = (i + 1).ToString();
             SaveHS.names[i].text = game.GetScoreList()[i].GetUserName().ToLower();
             SaveHS.score[i].text = game.GetScoreList()[i].GetValue().ToString();
-            App42Log.Console("userName is : " + game.GetScoreList()[i].GetUserName());
-            App42Log.Console("score is : " + game.GetScoreList()[i].GetValue());
+			Debug.Log ("highscore foi salvo");
+           // App42Log.Console("userName is : " + game.GetScoreList()[i].GetUserName());
+			//  App42Log.Console("score is : " + game.GetScoreList()[i].GetValue());
 
-            Debug.Log("A posiçao é "+(i+1)+ " is " + game.GetScoreList()[i].GetUserName() + " Score is" + game.GetScoreList()[i].GetValue());
+           // Debug.Log("A posiçao é "+(i+1)+ " is " + game.GetScoreList()[i].GetUserName() + " Score is" + game.GetScoreList()[i].GetValue());
         }
     }
 

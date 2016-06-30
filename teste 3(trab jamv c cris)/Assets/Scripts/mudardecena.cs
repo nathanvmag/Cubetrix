@@ -9,8 +9,11 @@ public class mudardecena : MonoBehaviour {
     public static bool sound = true ; 
 	public GameObject botoes,config; 
 	public Text low,med,high,best; 
+	Resolution r;
+
 	// Use this for initialization
 	void Start () {
+		r = Screen.currentResolution; 
         fadein = GameObject.Find("fade");
         carregar = false;
         carrecredito = false;
@@ -22,8 +25,7 @@ public class mudardecena : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (sound)Camera.main.GetComponent<AudioListener>().enabled = true;
-        else Camera.main.GetComponent<AudioListener>().enabled = false ; 
+		
         if (carrecredito)
         {            
             if (fadeeout()) Application.LoadLevelAsync("creditos");
@@ -102,6 +104,7 @@ public class mudardecena : MonoBehaviour {
 			med.color= Color.black; 
 			best.color= Color.black; 
 			high.color= Color.black; 
+			Screen.SetResolution (800, 480, true);
 			break;
 		case 1:
 			QualitySettings.SetQualityLevel(i+1);
@@ -109,6 +112,7 @@ public class mudardecena : MonoBehaviour {
 			med.color= Color.white; 
 			best.color= Color.black; 
 			high.color= Color.black; 
+			Screen.SetResolution (800, 480, true);
 			break;
 		case 2:
 			QualitySettings.SetQualityLevel(i+1);
@@ -116,13 +120,16 @@ public class mudardecena : MonoBehaviour {
 			med.color= Color.black; 
 			best.color= Color.black; 
 			high.color= Color.white; 
+			Screen.SetResolution (r.width, r.height, true);
+
 			break;
 		case 3:
-			QualitySettings.SetQualityLevel(i+2);
+			QualitySettings.SetQualityLevel (i + 2);
 			low.color = Color.black;
-			med.color= Color.black; 
-			best.color= Color.white; 
-			high.color= Color.black; 
+			med.color = Color.black; 
+			best.color = Color.white; 
+			high.color = Color.black; 
+			Screen.SetResolution (r.width, r.height, true);
 			break;
 		}
 

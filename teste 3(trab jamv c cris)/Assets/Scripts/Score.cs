@@ -25,6 +25,7 @@ public class Score : MonoBehaviour
     bool gameoveer;
     public Font block;
     public Text pausetx; 
+	public Camera cam; 
     // Use this for initialization
     void Start()
     {
@@ -45,7 +46,8 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {if (gameoveer)
-    {
+    {	
+			cam.depth = -2;
         if (mudardecena.fadeeout())
         {
             Application.LoadLevel("derrota");

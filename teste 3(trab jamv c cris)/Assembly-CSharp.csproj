@@ -49,6 +49,7 @@
      <Compile Include="Assets\EasyGesture\Example\Scripts\Example.cs" />
      <Compile Include="Assets\Scripts\Ads.cs" />
      <Compile Include="Assets\Scripts\Carregando.cs" />
+     <Compile Include="Assets\Scripts\Fps.cs" />
      <Compile Include="Assets\Scripts\Gameover.cs" />
      <Compile Include="Assets\Scripts\Name.cs" />
      <Compile Include="Assets\Scripts\Pause.cs" />
