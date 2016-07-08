@@ -40,7 +40,7 @@ public class Plano  : MonoBehaviour {
     {
         if (!Pause.pause &&!Score.showbutton)
         {
-			Debug.Log (speed);
+			//Debug.Log (speed);
             
             if (Input.GetKey(KeyCode.Space)|| touchV2.aperto)
             {
@@ -128,6 +128,7 @@ public class Plano  : MonoBehaviour {
 			voltaOrdem();
 				ObjComparar.transform.parent = GameObject.Find("Plane0").transform;
 			ObjComparar.transform.position = posi;
+			ObjComparar.transform.localPosition = new Vector3 (ObjComparar.transform.localPosition.x, 2, ObjComparar.transform.localPosition.z);
 		}
     }
 	void newbloco()

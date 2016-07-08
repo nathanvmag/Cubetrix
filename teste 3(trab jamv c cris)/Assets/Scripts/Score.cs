@@ -26,10 +26,14 @@ public class Score : MonoBehaviour
     public Font block;
     public Text pausetx; 
 	public Camera cam; 
+	public static bool firtSlideX,firtsSlideY,firtPress;
+	public Sprite[] spritesTuto;
     // Use this for initialization
     void Start()
     {
-        StartCoroutine(Tutorial());
+		firtSlideX = true;
+		firtsSlideY = false;
+		firtPress = false;       
         highScore = PlayerPrefs.GetInt("highscore") == null ? 0 : PlayerPrefs.GetInt("highscore");
         setVidas = 3;
         setScore = 0;
@@ -80,6 +84,29 @@ public class Score : MonoBehaviour
             menupropa.SetActive(false);
             if (Plano.player != null) Plano.player.SetActive(true);
         }
+
+
+		if (firtSlideX && (Player.esq1 || Player.dir1)) {
+			tutorialimg.sprite = spritesTuto [1];
+			Debug.Log ("slidex");
+			firtSlideX = false;
+			firtsSlideY = true; 
+
+		} else if (!firtSlideX && firtsSlideY &&( Player.baixo1 || Player.cima1) ){
+			firtsSlideY = false; 
+			tutorialimg.sprite = spritesTuto [2];
+			firtPress = true; 
+			Debug.Log ("slidey");
+		}
+		else if (!firtSlideX && !firtsSlideY &&firtPress &&touchV2.aperto) {
+			firtsSlideY = false; 
+			tutorialimg.gameObject.SetActive (false);
+			firtPress = false; 
+			Debug.Log ("press");
+
+		}
+
+			
             scoretext.text = score.ToString();
             if (Plano.seguidas == 10)
             {
@@ -146,20 +173,8 @@ public class Score : MonoBehaviour
                 imgvidas[i].gameObject.SetActive(true) ;
             }
                 
-                       }
+        }
     }
-    IEnumerator Tutorial()
-    {
-        tutorialimg.gameObject.SetActive(true);
-
-        yield return new WaitForSeconds(5);
-
-        tutorialimg.gameObject.SetActive(false);
-        start.gameObject.SetActive(true);
-        yield return new WaitForSeconds(2);
-        start.gameObject.SetActive(false);
-        
-
-    }
+    
 
 }

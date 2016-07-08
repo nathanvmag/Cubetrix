@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\Carregando.cs" />
      <Compile Include="Assets\Scripts\Fps.cs" />
      <Compile Include="Assets\Scripts\Gameover.cs" />
+     <Compile Include="Assets\Scripts\GetHS.cs" />
      <Compile Include="Assets\Scripts\Name.cs" />
      <Compile Include="Assets\Scripts\Pause.cs" />
      <Compile Include="Assets\Scripts\Plano.cs" />
@@ -68,6 +69,7 @@
      <None Include="Assets\Plugins\Android\unityads\proguard-project.txt" />
      <None Include="Assets\Plugins\Android\unityads\build.xml" />
      <None Include="Assets\Plugins\Android\unityads\res\layout\unityads_button_audio_toggle.xml" />
+     <None Include="Assets\MiniRoteiro le ai.txt" />
      <None Include="Assets\Plugins\Android\unityads\res\drawable\unityads_background_button_pause.xml" />
      <None Include="Assets\Plugins\Android\unityads\res\drawable\unityads_icon_speaker_triangle.xml" />
      <None Include="Assets\Plugins\Android\unityads\res\values\strings.xml" />

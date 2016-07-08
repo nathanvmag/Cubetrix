@@ -40,6 +40,11 @@ public class SaveHS : MonoBehaviour {
        
     }
 	void Start () {
+		ranks = new List<Text>();
+		names= new List<Text>();
+		score = new List<Text>();
+		texts = new List<GameObject>();
+
         App42API.Initialize(key,secretkey);
         gameserv = App42API.BuildGameService();
         scoreboardserv = App42API.BuildScoreBoardService();
@@ -92,8 +97,9 @@ public class SaveHS : MonoBehaviour {
 }
 public class gameCallback : App42CallBack
 {
+	
 
-    public void OnSuccess(object response)
+		public void OnSuccess(object response)
     {
         Game game = (Game)response;
         App42Log.Console("gameName is " + game.GetName());
@@ -132,7 +138,7 @@ public class savehigh: App42CallBack
 }
 public class toprank : App42CallBack
 {
-    
+	
     public void OnSuccess(object response)
     {
         Game game = (Game)response;

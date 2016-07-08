@@ -28,19 +28,19 @@ public class mudardecena : MonoBehaviour {
 		
         if (carrecredito)
         {            
-            if (fadeeout()) Application.LoadLevelAsync("creditos");
+            if (fadeeout()) Application.LoadLevel(4);
            
         }
         if (carregamenu)
         {
             
-            if (fadeeout()) Application.LoadLevelAsync("menu");
+            if (fadeeout()) Application.LoadLevel("menu");
         }
         if (carregajogo)
         {
             
             {
-                if (fadeeout())Application.LoadLevelAsync("load");
+                if (fadeeout())Application.LoadLevel("load");
             }
         }
 	}	
@@ -48,19 +48,19 @@ public class mudardecena : MonoBehaviour {
     public void clickcreditos()
     {
         carrecredito = true;   
-			Debug.Log ("acerto");
+		//	Debug.Log ("acerto");
     }
     public void clickjogar()
     {
         carregajogo = true; 
-            Debug.Log("volto");
+          //  Debug.Log("volto");
         
     }
     public void clickvoltar()
     {
         carregamenu = true;
         GameObject.Find("Button").SetActive(false);
-	    Debug.Log ("volto");
+	  //  Debug.Log ("volto");
     }
     public void clicksom()
     {
@@ -76,7 +76,7 @@ public class mudardecena : MonoBehaviour {
        
         GameObject fadein = GameObject.Find("fade");
         if (fadein == null) Debug.Log("opa n tem fade ");
-        Debug.Log("veio");
+     //   Debug.Log("veio");
         alpha = Time.deltaTime / 1.5f;
        if (fadein.GetComponent<SpriteRenderer>().color.a < 1)
         {
@@ -120,7 +120,7 @@ public class mudardecena : MonoBehaviour {
 			med.color= Color.black; 
 			best.color= Color.black; 
 			high.color= Color.white; 
-			Screen.SetResolution (r.width, r.height, true);
+		//	Screen.SetResolution (r.width, r.height, true);
 
 			break;
 		case 3:
@@ -129,7 +129,7 @@ public class mudardecena : MonoBehaviour {
 			med.color = Color.black; 
 			best.color = Color.white; 
 			high.color = Color.black; 
-			Screen.SetResolution (r.width, r.height, true);
+			//Screen.SetResolution (r.width, r.height, true);
 			break;
 		}
 
