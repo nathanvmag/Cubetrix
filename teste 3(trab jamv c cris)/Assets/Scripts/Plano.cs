@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Security.Cryptography;
 
 public class Plano  : MonoBehaviour {
     static public float speed = 2;
@@ -17,11 +19,14 @@ public class Plano  : MonoBehaviour {
     public static float  speedantiga;
     public Material[] skyboxes; 
     public static int seguidas = 0;
-    public AudioClip passou,explo,erro,winlife;
+	public AudioClip passou,explo,erro,winlife;
+	public static List<string> cores = new List<string> (new string[]{"C1BCDC","B2D4D8","B4DCC2","537CCC","E8BDC0","F4BCBD","FFBC5A","E7E7E7","95E0E9"});
     AudioSource audio;
-
+	int controlcor; 
 	// Use this for initialization
 	void Start () {
+		controlcor = 0; 
+		randList (cores);
         audio = GetComponent<AudioSource>();
         speed = 2;
         controle = 0;
@@ -78,7 +83,15 @@ public class Plano  : MonoBehaviour {
 							speed += 0.1f;
 						}
                         score.setScore += 1;
-                        if (score.setScore % 10 == 0) RenderSettings.skybox = skyboxes[Random.Range(0, skyboxes.Length)];
+						if (score.setScore % 10 == 0) {
+							RenderSettings.skybox = skyboxes [Random.Range (0, skyboxes.Length)];
+							if (controlcor < cores.Count)
+								controlcor++;
+							else
+								controlcor = 0; 
+							
+							Camera.main.backgroundColor = ConversorColor.HexToColor (cores [controlcor]);
+						}
                         if (speed < 10 ) speedantiga = speed;
                         seguidas++;
                         if (seguidas == 10) audio.PlayOneShot(winlife);
@@ -93,7 +106,7 @@ public class Plano  : MonoBehaviour {
                         {
                             int rand = Random.Range(0, 3);
                             Debug.Log("o rand é " + rand);
-                            if (rand == 1) Score.showbutton = true;
+							if (rand == 1) Score.showbutton = true;
                             else score.setVidas--;
                             Debug.Log("veio\a");
                         }
@@ -168,5 +181,19 @@ public class Plano  : MonoBehaviour {
 			GameObject.Find("Plane"+i).transform.position = new Vector3 (5 + (i*20),transform.position.y,transform.position.z);
 		}
 	}
+	public static void randList (List<string> alpha )
+	{
+		for (int i = 0; i < alpha.Count; i++) {
+			string temp = alpha[i];
+			int randomIndex = Random.Range(i, alpha.Count);
+			alpha[i] = alpha[randomIndex];
+			alpha[randomIndex] = temp;
+		}
+
+	}
+
+
 
 }
+
+

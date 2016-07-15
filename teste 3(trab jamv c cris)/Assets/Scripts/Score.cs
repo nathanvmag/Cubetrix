@@ -29,8 +29,8 @@ public class Score : MonoBehaviour
 	public static bool firtSlideX,firtsSlideY,firtPress;
 	public Sprite[] spritesTuto;
     // Use this for initialization
-    void Start()
-    {
+    void Start()    {   	
+		Camera.main.backgroundColor = ConversorColor.HexToColor (Plano.cores[0]);
 		firtSlideX = true;
 		firtsSlideY = false;
 		firtPress = false;       

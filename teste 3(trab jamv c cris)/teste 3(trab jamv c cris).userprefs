@@ -1,19 +1,23 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Pause.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\giramentodapeca.cs">
     <Files>
-      <File FileName="Assets\Scripts\Gameover.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\touchV2.cs" Line="53" Column="30" />
+      <File FileName="Assets\Scripts\Gameover.cs" Line="14" Column="24" />
       <File FileName="Assets\Scripts\mudardecena.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Name.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\giramentodapeca.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GetHS.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\touchV2.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Name.cs" Line="11" Column="2" />
+      <File FileName="Assets\Scripts\giramentodapeca.cs" Line="14" Column="31" />
       <File FileName="Assets\Scripts\Plano.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Score.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player.cs" Line="91" Column="20" />
       <File FileName="Assets\Scripts\SaveHS.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Pause.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Fps.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Carregando.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ConversorColor.cs" Line="16" Column="2" />
+      <File FileName="Assets\Scripts\Ads.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Shake.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Pause.cs" Line="129" Column="11" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

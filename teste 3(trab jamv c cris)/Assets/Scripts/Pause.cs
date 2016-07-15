@@ -55,7 +55,7 @@ public class Pause : MonoBehaviour {
             //click();
             for (int i = 0; i < pauseUi.Length; i++)
             {
-                pauseUi[i].SetActive(false);
+				pauseUi[i].GetComponent<RectTransform>().localPosition = Vector3.MoveTowards(	pauseUi[i].GetComponent<RectTransform>().localPosition,GameObject.Find("localPS").GetComponent<RectTransform>().localPosition+new Vector3(0,700,0),10);
             }
             if (Plano.player!=null) Plano.player.gameObject.SetActive(true);
         }
@@ -64,8 +64,9 @@ public class Pause : MonoBehaviour {
             pausebt.SetActive(false);
         for(int i = 0; i<pauseUi.Length;i++)
         {
-            pauseUi[i].SetActive(true);
-        }
+			// pauseUi[i].SetActive(true);
+				pauseUi[i].GetComponent<RectTransform>().localPosition = Vector3.MoveTowards(	pauseUi[i].GetComponent<RectTransform>().localPosition,GameObject.Find("localPS").GetComponent<RectTransform>().localPosition,10);
+			       }
         }
     }
     private void click()
@@ -92,6 +93,7 @@ public class Pause : MonoBehaviour {
           public void btplay()
     {
         pause = false; 
+		mudardecena.soundClick ();
     }
          public void btreload()
           {
@@ -102,10 +104,11 @@ public class Pause : MonoBehaviour {
                  StartCoroutine(ShowAdWhenReady());
              }
               restargame = true;
-              
+		mudardecena.soundClick ();
           }
     public void voltaMenu()
          {
+		mudardecena.soundClick ();
              carregamenu = true;
              int randon = Random.Range(0, 5);
              Debug.Log(randon);
@@ -124,6 +127,7 @@ public class Pause : MonoBehaviour {
     }
     public void btPause()
          {
+			mudardecena.soundClick ();
              pause = true; 
          }
     IEnumerator ShowAdWhenReady()

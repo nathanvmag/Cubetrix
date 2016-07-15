@@ -29,6 +29,8 @@ public class SaveHS : MonoBehaviour {
    static public Sprite[] error = new Sprite[2]; 
    Dictionary<String, String> otherMetaHeaders = new Dictionary<String, String>();
    public static bool salvouhs; 
+	public static GameObject reload;
+	public GameObject relo;
     
    // otherMetaHeaders.Add("orderByAscending", "score");
     
@@ -44,7 +46,7 @@ public class SaveHS : MonoBehaviour {
 		names= new List<Text>();
 		score = new List<Text>();
 		texts = new List<GameObject>();
-
+		reload = relo; 
         App42API.Initialize(key,secretkey);
         gameserv = App42API.BuildGameService();
         scoreboardserv = App42API.BuildScoreBoardService();
@@ -92,7 +94,15 @@ public class SaveHS : MonoBehaviour {
         
         cam.depth = -1;
         canvas[0].gameObject.SetActive(true);
+		mudardecena.soundClick ();
     }
+	public void reloadbt()
+	{
+		scoreboardserv.SaveUserScore(gamename, name, highscore,new savehigh()); 
+		reload.SetActive (false);
+		render.sprite = error [0];
+		mudardecena.soundClick ();
+	}
 
 }
 public class gameCallback : App42CallBack
@@ -111,6 +121,7 @@ public class gameCallback : App42CallBack
         App42Log.Console("Exception : " + e);
 		Debug.Log ("semnome");
 		SaveHS.render.sprite = SaveHS.error[1]; 
+		SaveHS.reload.SetActive (true);
     }  
 }
 public class savehigh: App42CallBack
@@ -134,6 +145,7 @@ public class savehigh: App42CallBack
         App42Log.Console("Exception : " + e);
         SaveHS.render.sprite = SaveHS.error[1]; 
 		Debug.Log ("nemsalvo");
+		SaveHS.reload.SetActive (true);
     }
 }
 public class toprank : App42CallBack
@@ -141,13 +153,15 @@ public class toprank : App42CallBack
 	
     public void OnSuccess(object response)
     {
+		
         Game game = (Game)response;
         App42Log.Console("gameName is " + game.GetName());
         for (int i = 0; i < game.GetScoreList().Count; i++)
         {
             SaveHS.render.sprite = SaveHS.error[0]; 
             SaveHS.ranks[ i].text = (i + 1).ToString();
-            SaveHS.names[i].text = game.GetScoreList()[i].GetUserName().ToLower();
+			if (i>2)SaveHS.names[i].text = game.GetScoreList()[i].GetUserName().ToLower();
+			else SaveHS.names[i].text = game.GetScoreList()[i].GetUserName().ToUpper();
             SaveHS.score[i].text = game.GetScoreList()[i].GetValue().ToString();
 			Debug.Log ("highscore foi salvo");
            // App42Log.Console("userName is : " + game.GetScoreList()[i].GetUserName());
@@ -161,5 +175,7 @@ public class toprank : App42CallBack
     {
         App42Log.Console("Exception : " + e);
          SaveHS.render.sprite = SaveHS.error[1]; 
+
+		SaveHS.reload.SetActive (true);
     }
 }

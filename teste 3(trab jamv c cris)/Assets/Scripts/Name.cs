@@ -14,7 +14,7 @@ public class Name : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		//PlayerPrefs.DeleteAll ();
 
 		if (Screen.currentResolution.width > 800 && Screen.currentResolution.height > 480&& Application.platform.Equals(RuntimePlatform.Android)) {
 			Screen.SetResolution (800, 480, true);
@@ -51,10 +51,13 @@ public class Name : MonoBehaviour {
         if (GameObject.Find("playername").GetComponent<Text>().text != "") { 
         PlayerPrefs.SetString("nome", GameObject.Find("playername").GetComponent<Text>().text);
         digname.SetActive(false);
+			mudardecena.soundClick ();
     }}
     public void showOK()
     {
        btOk.SetActive(true);
+
+
     }
 
 

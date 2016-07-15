@@ -24,14 +24,18 @@ public class GetHS : MonoBehaviour {
 	static public Sprite[] error = new Sprite[2]; 
 	static public bool scorenew; 
 	public GameObject newScore; 
+	public static GameObject reload;
+	public GameObject relo;
+	bool goRank; 
 	// Use this for initialization
 
 	void Start () {
+		goRank = false; 
 		ranks = new List<Text>();
 		names= new List<Text>();
 		score = new List<Text>();
 		texts = new List<GameObject>();
-
+		reload = relo; 
 		scorenew = false; 
 		otherMetaHeaders.Add ("orderByDescending", "score");
 		App42API.Initialize (key, secretkey);
@@ -56,7 +60,13 @@ public class GetHS : MonoBehaviour {
 		error [0] = bla [0];
 		error [1] = bla [1];
 	}
-
+	void FixedUpdate()
+	{
+		if (goRank) {
+			GameObject.Find ("menu").GetComponent<RectTransform> ().localPosition =Vector3.MoveTowards(GameObject.Find ("menu").GetComponent<RectTransform> ().localPosition, new Vector3 (-2.9f, 0, 4.6f),17);
+		}
+		else GameObject.Find ("menu").GetComponent<RectTransform> ().localPosition =Vector3.MoveTowards(GameObject.Find ("menu").GetComponent<RectTransform> ().localPosition,new Vector3(-2.9f,800, 4.6f) ,10);
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -67,19 +77,29 @@ public class GetHS : MonoBehaviour {
 		if (!scorenew) {
 			newScore.SetActive (false);
 		}
-			
+
 	}
 	public void ClickRank()
 	{
-		GameObject.Find ("menu").GetComponent<RectTransform> ().localPosition = new Vector3 (-2.9f, 0, 4.6f);
+		goRank = true; 
+		//GameObject.Find ("menu").GetComponent<RectTransform> ().localPosition = new Vector3 (-2.9f, 0, 4.6f);
 		botoes.SetActive (false);
+		mudardecena.soundClick ();
 	}
 	public void clickX()
 	{
-		GameObject.Find ("menu").GetComponent<RectTransform> ().localPosition = new Vector3 (-2.9f,800, 4.6f);
+		goRank = false; 
+		//GameObject.Find ("menu").GetComponent<RectTransform> ().localPosition = new Vector3 (-2.9f,800, 4.6f);
 		botoes.SetActive (true);
+		mudardecena.soundClick ();
 	}
-
+	public void reloadbt()
+	{
+		scoreboardserv.GetTopNRankers (gamename, maxplayers, new toprankMenu ());
+		reload.SetActive (false);
+		render.sprite = error [0];
+		mudardecena.soundClick ();
+	}
 }
 	
 public class toprankMenu : App42CallBack
@@ -93,8 +113,9 @@ public class toprankMenu : App42CallBack
 		for (int i = 0; i < game.GetScoreList().Count; i++)
 		{
 			GetHS.render.sprite = GetHS.error[0]; 
-			GetHS.ranks[ i].text = (i + 1).ToString();
-			GetHS.names[i].text = game.GetScoreList()[i].GetUserName().ToLower();
+			GetHS.ranks[ i].text = (i + 1).ToString() + ".";
+			if (i>2)GetHS.names[i].text = game.GetScoreList()[i].GetUserName().ToLower();
+			else GetHS.names[i].text = game.GetScoreList()[i].GetUserName().ToUpper();
 			GetHS.score[i].text = game.GetScoreList()[i].GetValue().ToString();
 			//Debug.Log ("foi pego");
 			// App42Log.Console("userName is : " + game.GetScoreList()[i].GetUserName());
@@ -108,5 +129,6 @@ public class toprankMenu : App42CallBack
 	{
 		App42Log.Console("Exception : " + e);
 		GetHS.render.sprite = GetHS.error[1]; 
+		GetHS.reload.SetActive (true);
 	}
 }
