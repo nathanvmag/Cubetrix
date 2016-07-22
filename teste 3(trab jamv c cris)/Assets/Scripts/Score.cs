@@ -29,7 +29,7 @@ public class Score : MonoBehaviour
 	public static bool firtSlideX,firtsSlideY,firtPress;
 	public Sprite[] spritesTuto;
     // Use this for initialization
-    void Start()    {   	
+    void Start()    {       
 		Camera.main.backgroundColor = ConversorColor.HexToColor (Plano.cores[0]);
 		firtSlideX = true;
 		firtsSlideY = false;
@@ -117,7 +117,8 @@ public class Score : MonoBehaviour
             {
                 PlayerPrefs.SetInt("highscore", score);
                 highscoreimg.gameObject.SetActive(true);
-                scoretext.color = new Color(Random.Range(0, 256) / 255f, Random.Range(0, 256) / 255f, Random.Range(0,256) / 255f);
+                highscoreimg.gameObject.GetComponent<RectTransform>().localPosition = Vector3.MoveTowards(highscoreimg.gameObject.GetComponent<RectTransform>().localPosition, new Vector3(scoretext.gameObject.GetComponent<RectTransform>().localPosition.x, scoretext.gameObject.GetComponent<RectTransform>().localPosition.y - 55,0),5);
+                //scoretext.color = new Color(Random.Range(0, 256) / 255f, Random.Range(0, 256) / 255f, Random.Range(0,256) / 255f);
                 
             }
             if (setVidas == 0)

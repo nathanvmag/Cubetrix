@@ -63,7 +63,7 @@ public class GetHS : MonoBehaviour {
 	void FixedUpdate()
 	{
 		if (goRank) {
-			GameObject.Find ("menu").GetComponent<RectTransform> ().localPosition =Vector3.MoveTowards(GameObject.Find ("menu").GetComponent<RectTransform> ().localPosition, new Vector3 (-2.9f, 0, 4.6f),17);
+			GameObject.Find ("menu").GetComponent<RectTransform> ().localPosition =Vector3.MoveTowards(GameObject.Find ("menu").GetComponent<RectTransform> ().localPosition, new Vector3 (-2.9f, 0, 4.6f),23);
 		}
 		else GameObject.Find ("menu").GetComponent<RectTransform> ().localPosition =Vector3.MoveTowards(GameObject.Find ("menu").GetComponent<RectTransform> ().localPosition,new Vector3(-2.9f,800, 4.6f) ,10);
 	}

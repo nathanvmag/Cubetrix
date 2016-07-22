@@ -18,6 +18,7 @@ TagManager:
   - scr
   - medalhas
   - plano
+  - peca
   layers:
   - Default
   - TransparentFX

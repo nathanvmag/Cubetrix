@@ -2,11 +2,9 @@
 using System.Collections;
 
 public class Carregando : MonoBehaviour {
-	public GameObject[] pecas; 
-	public Transform local; 
-	// Use this for initialization
+		// Use this for initialization
 	void Start () {
-		Instantiate(pecas[Random.Range(0,pecas.Length)],local.position,Quaternion.Euler(new Vector3(-11,290,0)));
+        // Instantiate(pecas[Random.Range(0, pecas.Length)], local.position, Quaternion.Euler(new Vector3(-11, 290, 0)));
 		 Application.LoadLevel("GrandeGame");
 	
 	}
