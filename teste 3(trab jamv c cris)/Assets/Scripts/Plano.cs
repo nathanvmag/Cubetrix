@@ -20,7 +20,7 @@ public class Plano  : MonoBehaviour {
     public Material[] skyboxes; 
     public static int seguidas = 0;
 	public AudioClip passou,explo,erro,winlife;
-	public static List<string> cores = new List<string> (new string[]{"C1BCDC","B2D4D8","B4DCC2","537CCC","E8BDC0","F4BCBD","FFBC5A","E7E7E7","95E0E9"});
+	public static List<string> cores = new List<string> (new string[]{"C1BCDC","B2D4D8","B4DCC2","E8BDC0","F4BCBD","FFBC5A","95E0E9"});
     AudioSource audio;
 	int controlcor; 
 	// Use this for initialization
@@ -57,6 +57,7 @@ public class Plano  : MonoBehaviour {
                 speed = speedantiga;
                // Debug.Log(speed);
             }
+            
             transform.position = Vector3.MoveTowards(transform.position, alvo.transform.position, speed * Time.deltaTime);
             if (localplayer.transform.position.x >= transform.position.x)
             {
@@ -75,7 +76,7 @@ public class Plano  : MonoBehaviour {
                        // Debug.Log("Valeu = a peca se chama " + ObjComparar.gameObject.name + "e a rotacao " + ObjComparar.transform.rotation + "player " + player.transform.rotation);
 						if (speed >= 10) {
 							speed = 10; 
-							if (speed < 7) {
+							if (speed < 5) {
 								speedantiga += 0.1f;
 							}
 
@@ -85,12 +86,8 @@ public class Plano  : MonoBehaviour {
                         score.setScore += 1;
 						if (score.setScore % 10 == 0) {
 							RenderSettings.skybox = skyboxes [Random.Range (0, skyboxes.Length)];
-							if (controlcor < cores.Count)
-								controlcor++;
-							else
-								controlcor = 0; 
-							
-							Camera.main.backgroundColor = ConversorColor.HexToColor (cores [controlcor]);
+												
+							Camera.main.backgroundColor = ConversorColor.HexToColor (cores [Random.Range(0,cores.Count)]);
 						}
                         if (speed < 10 ) speedantiga = speed;
                         seguidas++;

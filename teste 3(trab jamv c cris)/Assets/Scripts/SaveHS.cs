@@ -12,7 +12,7 @@ public class SaveHS : MonoBehaviour {
     private const string secretkey = "ad67abfb73dcd7ec24e353d705fb0a1212900958f2b79682ffec2d7b68bc2384";
     private GameService gameserv;
     private ScoreBoardService scoreboardserv;
-    string gamename = "Cubetrix";
+    string gamename = "Cubetrixx";
     bool salvar = false;
     double highscore;
     string name;

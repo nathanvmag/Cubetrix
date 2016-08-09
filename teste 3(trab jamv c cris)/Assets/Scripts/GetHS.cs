@@ -11,7 +11,7 @@ public class GetHS : MonoBehaviour {
 	private const string secretkey = "ad67abfb73dcd7ec24e353d705fb0a1212900958f2b79682ffec2d7b68bc2384";
 	private GameService gameserv;
 	private ScoreBoardService scoreboardserv;
-	string gamename = "Cubetrix";
+	string gamename = "Cubetrixx";
 	int maxplayers = 20;
 	Dictionary<String, String> otherMetaHeaders = new Dictionary<String, String>();
 	public static List<Text> ranks = new List<Text>();

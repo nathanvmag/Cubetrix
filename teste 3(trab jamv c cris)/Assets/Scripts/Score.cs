@@ -29,8 +29,8 @@ public class Score : MonoBehaviour
 	public static bool firtSlideX,firtsSlideY,firtPress;
 	public Sprite[] spritesTuto;
     // Use this for initialization
-    void Start()    {       
-		Camera.main.backgroundColor = ConversorColor.HexToColor (Plano.cores[0]);
+    void Start()    {
+       	Camera.main.backgroundColor = ConversorColor.HexToColor (Plano.cores[0]);
 		firtSlideX = true;
 		firtsSlideY = false;
 		firtPress = false;       
@@ -98,7 +98,7 @@ public class Score : MonoBehaviour
 			firtPress = true; 
 			Debug.Log ("slidey");
 		}
-		else if (!firtSlideX && !firtsSlideY &&firtPress &&touchV2.aperto) {
+		else if (!firtSlideX && !firtsSlideY &&firtPress &&(touchV2.aperto|| Input.GetKey(KeyCode.Space) )) {
 			firtsSlideY = false; 
 			tutorialimg.gameObject.SetActive (false);
 			firtPress = false; 
@@ -113,13 +113,20 @@ public class Score : MonoBehaviour
                 setVidas++;
                 Plano.seguidas = 0;
             }
-            if (score > highScore)
+        if (score > highScore)
+        {
+            if (Pause.carregamenu || Pause.restargame)
+            {
+                PlayerPrefs.DeleteKey("highscore");
+                PlayerPrefs.SetInt("highscore", PlayerPrefs.GetInt("antigohigh"));
+            }
+            else
             {
                 PlayerPrefs.SetInt("highscore", score);
                 highscoreimg.gameObject.SetActive(true);
-                highscoreimg.gameObject.GetComponent<RectTransform>().localPosition = Vector3.MoveTowards(highscoreimg.gameObject.GetComponent<RectTransform>().localPosition, new Vector3(scoretext.gameObject.GetComponent<RectTransform>().localPosition.x, scoretext.gameObject.GetComponent<RectTransform>().localPosition.y - 55,0),5);
+                highscoreimg.gameObject.GetComponent<RectTransform>().localPosition = Vector3.MoveTowards(highscoreimg.gameObject.GetComponent<RectTransform>().localPosition, new Vector3(GameObject.Find("hslocal").GetComponent<RectTransform>().localPosition.x, GameObject.Find("hslocal").GetComponent<RectTransform>().localPosition.y), 5);
                 //scoretext.color = new Color(Random.Range(0, 256) / 255f, Random.Range(0, 256) / 255f, Random.Range(0,256) / 255f);
-                
+            }
             }
             if (setVidas == 0)
             {

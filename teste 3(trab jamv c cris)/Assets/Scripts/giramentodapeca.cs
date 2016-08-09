@@ -78,7 +78,7 @@ public class giramentodapeca : MonoBehaviour
 
 
         }
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(3);
         voltar = true;
         controle = 0;
         rodar = true;

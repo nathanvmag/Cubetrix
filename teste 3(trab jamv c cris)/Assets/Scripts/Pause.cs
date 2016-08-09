@@ -7,11 +7,14 @@ public class Pause : MonoBehaviour {
     public static bool pause;
     public GameObject pausebt;
     public GameObject[] pauseUi;
-    bool restargame, carregamenu;
+    public static bool restargame, carregamenu;
     bool AdShow;
 	public Camera cam ; 
    
 	void Start () {
+        
+        Debug.Log("Antigohd " + PlayerPrefs.GetInt("antigohigh"));
+        Debug.Log("high " + PlayerPrefs.GetInt("highscore"));
         pause = false;
         pausebt = GameObject.Find("pausebt");
         restargame = false;
@@ -35,7 +38,8 @@ public class Pause : MonoBehaviour {
 				cam.depth = -3;
                 if (mudardecena.fadeeout())
                 {
-
+                    PlayerPrefs.DeleteKey("highscore");
+                    PlayerPrefs.SetInt("highscore", PlayerPrefs.GetInt("antigohigh"));
                     Application.LoadLevel("GrandeGame");
                 }
             }
@@ -44,7 +48,8 @@ public class Pause : MonoBehaviour {
 				cam.depth = -3;
                 if (mudardecena.fadeeout())
                 {
-
+                    PlayerPrefs.DeleteKey("highscore");
+                    PlayerPrefs.SetInt("highscore", PlayerPrefs.GetInt("antigohigh"));
                     Application.LoadLevel("Menu");
                 }
             }
@@ -97,6 +102,10 @@ public class Pause : MonoBehaviour {
     }
          public void btreload()
           {
+        PlayerPrefs.DeleteKey("highscore");
+  
+        PlayerPrefs.SetInt("highscore", PlayerPrefs.GetInt("antigohigh"));
+        Debug.Log("hey");
              int randon = Random.Range(0,5);
              Debug.Log(randon);
              if (randon==0)
@@ -108,7 +117,9 @@ public class Pause : MonoBehaviour {
           }
     public void voltaMenu()
          {
-		mudardecena.soundClick ();
+        Debug.Log("hey");
+       
+        mudardecena.soundClick ();
              carregamenu = true;
              int randon = Random.Range(0, 5);
              Debug.Log(randon);
