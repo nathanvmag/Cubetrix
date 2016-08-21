@@ -22,7 +22,8 @@ public class Pause : MonoBehaviour {
 	}
 	void Awake ()
     {
-        Advertisement.Initialize("1082397");
+		if (Application.platform == RuntimePlatform.Android)  Advertisement.Initialize("1082397");
+		else if (Application.platform == RuntimePlatform.IPhonePlayer) Advertisement.Initialize("1082398");
     }
 	// Update is called once per frame
     void Update()
