@@ -92,6 +92,9 @@ public class mudardecena : MonoBehaviour {
         else qualimg = 1;
         GameObject.Find("sound").GetComponent<Image>().sprite = soundd[qualimg];      
     }
+	/// <summary>
+	/// Fadeeout precisa de um gameobject chamado fade
+	/// </summary>
     public static bool fadeeout()
     {
         float alpha;

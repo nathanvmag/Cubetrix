@@ -17,6 +17,7 @@ public class Plano  : MonoBehaviour {
 	Transform localpespe;
     private Score score; 
     public static float  speedantiga;
+	static float speedUp;
     public Material[] skyboxes; 
     public static int seguidas = 0;
 	public AudioClip passou,explo,erro,winlife;
@@ -25,6 +26,7 @@ public class Plano  : MonoBehaviour {
 	int controlcor; 
 	// Use this for initialization
 	void Start () {
+		speedUp = 0; 
 		controlcor = 0; 
 		randList (cores);
         audio = GetComponent<AudioSource>();
@@ -45,20 +47,22 @@ public class Plano  : MonoBehaviour {
     {
         if (!Pause.pause &&!Score.showbutton)
         {
-			//Debug.Log (speed);
+			Debug.Log (speed);
             
             if (Input.GetKey(KeyCode.Space)|| touchV2.aperto)
             {
-               speed = 10;
+              // speed = 10;
+				speedUp = 10- speed;
 
             }
             else
             {
-                speed = speedantiga;
+				speedUp = 0;
+				//speed = speedantiga;
                // Debug.Log(speed);
             }
             
-            transform.position = Vector3.MoveTowards(transform.position, alvo.transform.position, speed * Time.deltaTime);
+			transform.position = Vector3.MoveTowards(transform.position, alvo.transform.position, (speed+speedUp) * Time.deltaTime);
             if (localplayer.transform.position.x >= transform.position.x)
             {
                 bool acertou;
@@ -74,13 +78,18 @@ public class Plano  : MonoBehaviour {
                     if (acertou)
                     {
                        // Debug.Log("Valeu = a peca se chama " + ObjComparar.gameObject.name + "e a rotacao " + ObjComparar.transform.rotation + "player " + player.transform.rotation);
-						if (speed >= 10) {
+						/*if (speed >= 10) {
 							speed = 10; 
 							if (speed < 5) {
 								speedantiga += 0.1f;
 							}
 
 						} else if (speed<7) {
+							speed += 0.1f;
+						}*/
+						if (speed >= 6.5f) {
+							speed = 6.5f; 
+						} else {
 							speed += 0.1f;
 						}
                         score.setScore += 1;
@@ -89,7 +98,7 @@ public class Plano  : MonoBehaviour {
 												
 							Camera.main.backgroundColor = ConversorColor.HexToColor (cores [Random.Range(0,cores.Count)]);
 						}
-                        if (speed < 10 ) speedantiga = speed;
+                      	 // if (speed < 10 ) speedantiga = speed;
                         seguidas++;
                         if (seguidas == 10) audio.PlayOneShot(winlife);
                         else audio.PlayOneShot(passou);

@@ -41,7 +41,7 @@ public class Gameover : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		GameObject.Find ("bts").GetComponent<RectTransform> ().localPosition = Vector3.MoveTowards (GameObject.Find ("bts").GetComponent<RectTransform> ().localPosition, locais [3].GetComponent<RectTransform> ().localPosition, 3);
 		score.gameObject.GetComponent<RectTransform> ().localPosition = Vector3.MoveTowards (score.gameObject.GetComponent<RectTransform> ().localPosition, locais [0].GetComponent<RectTransform> ().localPosition,8);
 		highscore.gameObject.GetComponent<RectTransform> ().localPosition = Vector3.MoveTowards (highscore.gameObject.GetComponent<RectTransform> ().localPosition, locais [1].GetComponent<RectTransform> ().localPosition,8);

@@ -13,10 +13,7 @@ public class Name : MonoBehaviour {
 	float deltaTime = 0.0f;
 	void Awake()
 	{
-		if (Screen.currentResolution.width > 800 && Screen.currentResolution.height > 480&&( Application.platform.Equals(RuntimePlatform.Android) || Application.platform.Equals(RuntimePlatform.IPhonePlayer))) {
-			Screen.SetResolution (800, 480, true);
-
-		}	
+		
 	}
 	// Use this for initialization
 	void Start () {
