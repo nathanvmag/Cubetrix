@@ -19,4 +19,5 @@ public class Intro : MonoBehaviour {
 			Application.LoadLevel ("Menu");
 		}
 	}
+
 }

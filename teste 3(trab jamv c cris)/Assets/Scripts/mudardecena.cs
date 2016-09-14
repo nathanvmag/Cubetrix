@@ -127,6 +127,10 @@ public class mudardecena : MonoBehaviour {
 			botoes.SetActive(true);
 		}
 	}
+	public void fbButton()
+	{
+		Application.OpenURL ("https://www.facebook.com/stormide");
+	}
 	public void qualitySettings(int i)
 	{
 		switch (i) {
